@@ -1,9 +1,10 @@
 {
+  "name": "sf-admin-cli",
   "private": "true",
   "description": "sf admin cli",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint --fix packages/**/*.js packages/**/bin/*"
+    "lint": "eslint --fix packages/**/*.js"
   },
   "devDependencies": {
     "eslint": "^7.30.0",
