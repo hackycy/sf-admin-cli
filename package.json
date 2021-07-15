@@ -1,0 +1,14 @@
+{
+  "name": "@hackycy/sf-admin-cli",
+  "version": "0.0.1",
+  "description": "sf admin cli",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sfadmin"
+  ],
+  "author": "hackycy",
+  "license": "MIT"
+}
