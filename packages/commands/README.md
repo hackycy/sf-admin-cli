@@ -1,11 +1,4 @@
-# `commands`
+### `commands`
 
-> TODO: description
-
-## Usage
-
-```
-const commands = require('commands');
-
-// TODO: DEMONSTRATE API
+> sf admin cli commands module
 ```

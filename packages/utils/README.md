@@ -1,11 +1,4 @@
-# `utils`
+### `utils`
 
-> TODO: description
-
-## Usage
-
-```
-const utils = require('utils');
-
-// TODO: DEMONSTRATE API
+> sf admin cli utils module
 ```

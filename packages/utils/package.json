@@ -26,5 +26,12 @@
   },
   "bugs": {
     "url": "https://github.com/hackycy/sf-admin-cli/issues"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "chalk": "^4.1.1",
+    "execa": "^5.1.1",
+    "open": "^8.2.1",
+    "ora": "^5.4.1"
   }
 }
