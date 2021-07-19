@@ -1,14 +1,16 @@
 'use strict'
 
 const pkg = require('../package.json')
-const { log } = require('@sfadminltd/utils')
+const { log, npm } = require('@sfadminltd/utils')
 const rootCheck = require('root-check')
 
-function core() {
+async function core() {
 	checkVersion()
 
 	// 检查是否在sudo下运行，是则自动降级
 	rootCheck()
+
+	await npm.getPackageLastVersion('vue')
 }
 
 /**

@@ -4,6 +4,9 @@ module.exports = {
     node: true,
     es6: true
   },
+  parserOptions: {
+    ecmaVersion: 8
+  },
   rules: {
     quotes: [2, 'single'],
     semi: ['error', 'never'],
