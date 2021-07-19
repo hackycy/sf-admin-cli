@@ -9,7 +9,7 @@
   "author": "hackycy <qa894178522@qq.com>",
   "homepage": "https://github.com/hackycy/sf-admin-cli#readme",
   "license": "MIT",
-  "main": "lib/core.js",
+  "main": "lib/index.js",
   "bin": {
     "sfadmin": "bin/cli.js"
   },
