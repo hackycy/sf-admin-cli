@@ -1,7 +1,7 @@
 {
-  "name": "@sfadminltd/core",
+  "name": "@sfadminltd/cli",
   "version": "0.0.0",
-  "description": "sf admin core",
+  "description": "sf admin cli",
   "keywords": [
     "sf",
     "admin"
@@ -31,6 +31,7 @@
     "url": "https://github.com/hackycy/sf-admin-cli/issues"
   },
   "dependencies": {
-    "@sfadminltd/utils": "file:../utils"
+    "@sfadminltd/utils": "file:../utils",
+    "root-check": "^1.0.0"
   }
 }
