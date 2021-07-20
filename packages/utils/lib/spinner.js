@@ -42,6 +42,13 @@ exports.stopSpinner = (persist) => {
   lastMsg = null
 }
 
+exports.pauseSpinner = () => {
+  if (spinner.isSpinning) {
+    spinner.stop()
+    isPaused = true
+  }
+}
+
 exports.resumeSpinner = () => {
   if (isPaused) {
     spinner.start()
