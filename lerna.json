@@ -5,10 +5,7 @@
       "npmClientArgs": ["--no-package-lock"]
     },
     "publish": {
-      "ignoreChanges": [
-        "package-lock.json",
-        "packages/*/package-lock.json"
-      ]
+      "message": "chore(release): publish"
     }
   },
   "packages": [
