@@ -27,6 +27,9 @@
   "bugs": {
     "url": "https://github.com/hackycy/sf-admin-cli/issues"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "axios": "^0.21.1",
     "chalk": "^4.1.1",
