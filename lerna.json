@@ -3,6 +3,12 @@
   "command": {
     "bootstrap": {
       "npmClientArgs": ["--no-package-lock"]
+    },
+    "publish": {
+      "ignoreChanges": [
+        "package-lock.json",
+        "packages/*/package-lock.json"
+      ]
     }
   },
   "packages": [

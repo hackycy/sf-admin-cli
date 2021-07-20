@@ -4,7 +4,8 @@
   "description": "sf admin cli",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint --fix packages/**/*.js"
+    "lint": "eslint --fix packages/**/*.js",
+    "publish": "lerna publish"
   },
   "devDependencies": {
     "eslint": "^7.30.0",
