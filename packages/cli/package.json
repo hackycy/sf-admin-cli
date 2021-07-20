@@ -9,7 +9,6 @@
   "author": "hackycy <qa894178522@qq.com>",
   "homepage": "https://github.com/hackycy/sf-admin-cli#readme",
   "license": "MIT",
-  "main": "lib/index.js",
   "bin": {
     "sfadmin": "bin/cli.js"
   },
@@ -32,6 +31,9 @@
   },
   "dependencies": {
     "@sfadminltd/utils": "file:../utils",
+    "@sfadminltd/commands": "file:../commands",
+    "commander": "^8.0.0",
+    "leven": "^3.1.0",
     "root-check": "^1.0.0"
   }
 }
