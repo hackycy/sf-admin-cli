@@ -1,6 +1,6 @@
 {
   "name": "sf-admin-cli",
-  "private": "true",
+  "private": true,
   "description": "sf admin cli",
   "main": "index.js",
   "scripts": {
