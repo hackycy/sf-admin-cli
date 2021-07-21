@@ -4,6 +4,7 @@
   "description": "sf admin cli",
   "main": "index.js",
   "scripts": {
+    "prepublish": "rimraf commands/**/package-lock.json core/**/package-lock.json",
     "lint": "eslint --fix packages/**/*.js",
     "publish": "lerna publish"
   },
@@ -11,6 +12,7 @@
     "eslint": "^7.30.0",
     "eslint-plugin-prettier": "^3.4.0",
     "lerna": "^4.0.0",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "rimraf": "^3.0.2"
   }
 }
