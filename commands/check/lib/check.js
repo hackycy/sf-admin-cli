@@ -12,10 +12,12 @@ const { log, npm, spinner, chalk, semver } = require('@sfadminltd/utils')
   // 获取远程npm仓库版本
   const version = await npm.getPackageLastVersion(id, installedVersion, process.env.SF_CLI_USE_TAOBAO_REGISTRY)
   spinner.stopSpinner(false)
-  log.info(`remote last npm version：${version}，current installed version：${installedVersion}`)
+  log.verbose(`remote last npm version：${version}，current installed version：${installedVersion}`)
   if (semver.lt(installedVersion, version)) {
     // 如果已安装版本小于远程npm版本则提示更新
-    log.notice(`you can run ${chalk.green(`npm install -g ${id}`)} to update`)
+    log.notice(`You can run ${chalk.green(`npm install -g ${id}`)} to update`)
+  } else {
+    log.info('Currently is the latest version')
   }
 }
 
