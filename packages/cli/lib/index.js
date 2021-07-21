@@ -35,6 +35,12 @@ function registerCommand(argv) {
 			process.env.SF_CLI_USE_TAOBAO_REGISTRY = this.opts().taobao
 			require('@sfadminltd/commands').check(pkg.version, pkg.name)
 		})
+	
+	// more help text
+	program.addHelpText('after', 
+	`
+  Run ${chalk.greenBright(Object.keys(pkg.bin)[0] + ' <command> --help')} for detailed usage of given command.
+	`)
 
 	// 开启Debug模式
 	program.on('option:debug', function() {
