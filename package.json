@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepublish": "rimraf commands/**/package-lock.json core/**/package-lock.json",
-    "lint": "eslint --fix packages/**/*.js",
+    "lint": "eslint --fix commands/**/*.js core/**/*.js",
     "publish": "lerna publish"
   },
   "devDependencies": {
