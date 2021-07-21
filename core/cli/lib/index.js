@@ -1,7 +1,7 @@
 'use strict'
 
 const pkg = require('../package.json')
-const { log, chalk } = require('@sfadminltd/utils')
+const { log, chalk, semver } = require('@sfadminltd/utils')
 const rootCheck = require('root-check')
 // const leven = require('leven')
 
@@ -9,6 +9,9 @@ const rootCheck = require('root-check')
  * 脚手架初始化
  */
 async function init(argv) {
+	// check node
+	checkNodeVersion()
+
 	// 检查是否在sudo下运行，是则自动降级
 	rootCheck()
 
@@ -63,6 +66,17 @@ function registerCommand(argv) {
 
 	// parse
 	program.parse(argv)
+}
+
+/**
+ * 检查Node环境必须大于12
+ */
+ function checkNodeVersion() {
+	const version = process.version
+	if (!semver.satisfies(version, '>=12.0.0')) {
+		log.error(`required Node version must be greater than 12, current Node version: ${chalk.yellow(semver.clean(version))}`)
+		process.exit(1)
+	}
 }
 
 module.exports = init
