@@ -6,7 +6,7 @@
   "scripts": {
     "prepublish": "rimraf commands/**/package-lock.json core/**/package-lock.json",
     "lint": "eslint --fix commands/**/*.js core/**/*.js",
-    "publish": "lerna publish"
+    "publish": "npm run prepublish && lerna publish"
   },
   "devDependencies": {
     "eslint": "^7.30.0",
