@@ -7,6 +7,12 @@
 temp
 /node_modules
 /package-lock.json
-packages/**/test
-packages/**/node_modules
-packages/**/package-lock.json
+# core
+core/**/test
+core/**/node_modules
+core/**/package-lock.json
+
+# commands
+commands/**/test
+commands/**/node_modules
+commands/**/package-lock.json

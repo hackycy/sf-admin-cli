@@ -1,17 +1,11 @@
 {
-  "name": "@sfadminltd/cli",
+  "name": "@sfadminltd/check",
   "version": "0.0.0",
-  "description": "sf admin cli",
-  "keywords": [
-    "sf",
-    "admin"
-  ],
+  "description": "cli command check",
   "author": "hackycy <qa894178522@qq.com>",
   "homepage": "https://github.com/hackycy/sf-admin-cli#readme",
   "license": "MIT",
-  "bin": {
-    "sfadmin": "bin/cli.js"
-  },
+  "main": "index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -19,6 +13,9 @@
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hackycy/sf-admin-cli.git"
@@ -29,14 +26,7 @@
   "bugs": {
     "url": "https://github.com/hackycy/sf-admin-cli/issues"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "dependencies": {
-    "@sfadminltd/utils": "file:../utils",
-    "@sfadminltd/commands": "file:../commands",
-    "commander": "^8.0.0",
-    "leven": "^3.1.0",
-    "root-check": "^1.0.0"
+    "@sfadminltd/utils": "file:../../core/utils"
   }
 }

@@ -33,7 +33,7 @@ function registerCommand(argv) {
 		.option('-t, --taobao', 'use taobao npm registry when fetch remote version (only for npm)', false)
 		.action(function() {
 			process.env.SF_CLI_USE_TAOBAO_REGISTRY = this.opts().taobao
-			require('@sfadminltd/commands').check(pkg.version, pkg.name)
+			require('@sfadminltd/check')(pkg.version, pkg.name)
 		})
 	
 	// more help text
