@@ -1,6 +1,6 @@
 {
   "name": "@sfadminltd/cli",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "sf admin cli",
   "keywords": [
     "sf",
@@ -33,8 +33,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@sfadminltd/utils": "file:../utils",
     "@sfadminltd/check": "file:../../commands/check",
+    "@sfadminltd/utils": "file:../utils",
     "commander": "^8.0.0",
     "leven": "^3.1.0",
     "root-check": "^1.0.0"

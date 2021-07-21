@@ -2,7 +2,9 @@
   "npmClient": "npm",
   "command": {
     "bootstrap": {
-      "npmClientArgs": ["--no-package-lock"]
+      "npmClientArgs": [
+        "--no-package-lock"
+      ]
     },
     "publish": {
       "message": "chore(release): publish"
@@ -12,5 +14,5 @@
     "core/*",
     "commands/*"
   ],
-  "version": "0.0.0"
+  "version": "0.0.1"
 }
