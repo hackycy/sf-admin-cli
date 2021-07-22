@@ -103,13 +103,14 @@ const DOWNLOAD_URL = 'https://github.com.cnpmjs.org/hackycy/$1/archive/refs/head
   // 解压server
   log(`正在解压${repo.zipName}代码`)
   const serverZip = new AdmZip(path.resolve(tempDirPath, repo.zipName))
-  serverZip.extractAllToAsync(tempDirPath, true)
+  serverZip.extractAllTo(tempDirPath, true)
 
   const unzipServerDirName = `${repo.repoName}-${repo.branch}`
 
   for (let i = 0; i < repo.deleteFiles.length; i++) {
-    log(`正在删除无用目录 ${repo.deleteFiles[i]}`)
-    fs.removeSync(path.resolve(tempDirPath, unzipServerDirName, repo.deleteFiles[i]))
+    const dpath = path.resolve(tempDirPath, unzipServerDirName, repo.deleteFiles[i])
+    log(`正在删除无用目录 ${dpath}`)
+    fs.removeSync(dpath)
   }
 
   // 拷贝server代码
@@ -123,7 +124,7 @@ const DOWNLOAD_URL = 'https://github.com.cnpmjs.org/hackycy/$1/archive/refs/head
 
   log(`正在解压${repo.vueBranch}-vue代码`)
   const vueZip = new AdmZip(path.resolve(tempDirPath, `${repo.vueBranch}-vue.zip`))
-  vueZip.extractAllToAsync(tempDirPath, true)
+  vueZip.extractAllTo(tempDirPath, true)
 
   const unzipVueDirName = `${VUE_REPO}-${repo.vueBranch}`
 
