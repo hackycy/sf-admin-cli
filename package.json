@@ -6,11 +6,14 @@
   "scripts": {
     "prepublish": "rimraf commands/**/package-lock.json core/**/package-lock.json",
     "lint": "eslint --fix commands/**/*.js core/**/*.js",
-    "publish": "npm run prepublish && lerna publish"
+    "publish": "npm run prepublish && lerna publish",
+    "clean": "node ./scripts/clean.js"
   },
   "devDependencies": {
+    "axios": "^0.21.1",
     "eslint": "^7.30.0",
     "eslint-plugin-prettier": "^3.4.0",
+    "fs-extra": "^9.1.0",
     "lerna": "^4.0.0",
     "prettier": "^2.3.2",
     "rimraf": "^3.0.2"
