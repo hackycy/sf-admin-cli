@@ -11,6 +11,6 @@ const fs = require('fs-extra')
   const tempDirPath = path.resolve(__dirname, '../temp')
   // clean
   log('开始清理临时文件夹目录')
-  fs.emptyDirSync(tempDirPath)
+  fs.removeSync(tempDirPath)
   log('已清理临时文件夹目录')  
 })()
