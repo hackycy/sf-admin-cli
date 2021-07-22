@@ -21,7 +21,10 @@ async function downloadFile(fileUrl, output) {
   const response = await axios({
     method: 'get',
     url: fileUrl,
-    responseType: 'stream'
+    responseType: 'stream',
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36'
+    }
   })
   return new Promise((resolve, reject) => {
     response.data.pipe(writer)
