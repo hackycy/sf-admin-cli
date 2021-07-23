@@ -8,6 +8,7 @@ const AdmZip = require('adm-zip')
 const inquirer = require('inquirer')
 const fs = require('fs-extra')
 const path = require('path')
+const parse = require('parse-gitignore')
 
 const NEST_REPO = {
   repoName: 'sf-nest-admin',
@@ -24,8 +25,7 @@ const NEST_REPO = {
     'README.md',
     '.github',
     'docs',
-    'test',
-    'public'
+    'test'
   ]
 }
 
@@ -132,6 +132,24 @@ const DOWNLOAD_URL = 'https://github.com.cnpmjs.org/hackycy/$1/archive/refs/head
   fs.copySync(
     path.resolve(unzipServerDirPath, ...repo.devSamplePath, repo.devConfigName),
     path.resolve(unzipServerDirPath, ...repo.devConfigPath, repo.devConfigName))
+
+  log('重新生成.gitignore文件')
+  const ignoreFilePath = path.resolve(unzipServerDirPath, '.gitignore')
+  const ignoreArr = parse(fs.readFileSync(ignoreFilePath))
+  // delete
+  fs.removeSync(ignoreFilePath)
+  // 移除dev config ignore
+  const newIgnoreArr = ignoreArr.filter((v) => {
+    if (v.includes(path.basename(repo.devConfigName, '.ts'))) {
+      return false
+    }
+    if (v.includes('docs')) {
+      return false
+    }
+    return true
+  })
+  fs.outputFileSync(ignoreFilePath, newIgnoreArr.join('\n'))
+
   
   // delete
   for (let i = 0; i < repo.deleteFiles.length; i++) {

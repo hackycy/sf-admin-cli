@@ -8,7 +8,7 @@ const fs = require('fs')
  * @param {string} msg 
  */
 function log(msg) {
-  console.log(`>>>>>>>>>>>>> ${msg} >>>>>>>>>>>>>`)
+  console.log(`>>>>>>>>>>>>> ${msg}`)
 }
 
 /**
