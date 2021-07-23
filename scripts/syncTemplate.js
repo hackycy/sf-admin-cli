@@ -14,6 +14,9 @@ const NEST_REPO = {
   branch: 'main',
   zipName: 'nest-server.zip',
   vueBranch: 'nest',
+  devConfigName: 'config.development.ts',
+  devSamplePath: ['docs', 'sample'],
+  devConfigPath: ['src', 'config'],
   deleteFiles: [
     '.dockerignore',
     'Dockerfile',
@@ -31,6 +34,9 @@ const MIDWAY_REPO = {
   branch: 'main',
   zipName: 'midway-server.zip',
   vueBranch: 'midway',
+  devConfigName: 'config.local.ts',
+  devSamplePath: ['docs', 'sample'],
+  devConfigPath: ['src', 'config'],
   deleteFiles: [
     '.dockerignore',
     'Dockerfile',
@@ -38,12 +44,20 @@ const MIDWAY_REPO = {
     'README.md',
     '.github',
     'docs',
-    'test',
-    'public'
+    'test'
   ]
 }
 
-const VUE_REPO = 'sf-vue-admin'
+const VUE_REPO = {
+  repoName: 'sf-vue-admin',
+  deleteFiles: [
+    '.dockerignore',
+    'Dockerfile',
+    'LICENSE',
+    'README.md',
+    '.github'
+  ]
+}
 
 const DOWNLOAD_URL = 'https://github.com.cnpmjs.org/hackycy/$1/archive/refs/heads/$2.zip'
 
@@ -70,6 +84,8 @@ const DOWNLOAD_URL = 'https://github.com.cnpmjs.org/hackycy/$1/archive/refs/head
     repo = MIDWAY_REPO
   }
 
+  log(`已选择同步${type}仓库模版`)
+
   // 获取temp文件夹
   const tempDirPath = path.resolve(__dirname, '../temp')
 
@@ -81,6 +97,8 @@ const DOWNLOAD_URL = 'https://github.com.cnpmjs.org/hackycy/$1/archive/refs/head
   fs.ensureDirSync(tempDirPath)
   fs.emptyDirSync(tempDirPath)
 
+  //--------------------------------------------------
+
   log(`开始下载${type}仓库代码`)
   const nestDownloadUrl = DOWNLOAD_URL.replace('$1', repo.repoName).replace(
     '$2',
@@ -90,7 +108,7 @@ const DOWNLOAD_URL = 'https://github.com.cnpmjs.org/hackycy/$1/archive/refs/head
   log(`已下载${type}仓库代码`)
 
   log(`开始下载${type}对应前端仓库${repo.vueBranch}分支代码`)
-  const vueDownloadUrl = DOWNLOAD_URL.replace('$1', VUE_REPO).replace(
+  const vueDownloadUrl = DOWNLOAD_URL.replace('$1', VUE_REPO.repoName).replace(
     '$2',
     repo.vueBranch
   )
@@ -100,21 +118,30 @@ const DOWNLOAD_URL = 'https://github.com.cnpmjs.org/hackycy/$1/archive/refs/head
   )
   log(`已下载${type}对应前端仓库代码`)
 
+  //----------------------------------------------------------------
+  const unzipServerDirName = `${repo.repoName}-${repo.branch}`
+  const unzipServerDirPath = path.resolve(tempDirPath, unzipServerDirName)
+
   // 解压server
   log(`正在解压${repo.zipName}代码`)
   const serverZip = new AdmZip(path.resolve(tempDirPath, repo.zipName))
   serverZip.extractAllTo(tempDirPath, true)
 
-  const unzipServerDirName = `${repo.repoName}-${repo.branch}`
+  log('拷贝dev config文件')
 
+  fs.copySync(
+    path.resolve(unzipServerDirPath, ...repo.devSamplePath, repo.devConfigName),
+    path.resolve(unzipServerDirPath, ...repo.devConfigPath, repo.devConfigName))
+  
+  // delete
   for (let i = 0; i < repo.deleteFiles.length; i++) {
-    const dpath = path.resolve(tempDirPath, unzipServerDirName, repo.deleteFiles[i])
-    log(`正在删除无用目录 ${dpath}`)
+    const dpath = path.resolve(unzipServerDirPath, repo.deleteFiles[i])
+    log(`执行删除 ${dpath}`)
     fs.removeSync(dpath)
   }
 
   // 拷贝server代码
-  log('拷贝Server代码')
+  log('移动Server模版代码')
   const serverPath = path.resolve(tplPath, 'server')
   fs.ensureDirSync(serverPath)
   fs.emptyDirSync(serverPath)
@@ -122,19 +149,31 @@ const DOWNLOAD_URL = 'https://github.com.cnpmjs.org/hackycy/$1/archive/refs/head
   log(`移动${unzipServerDirName}目录至${serverPath}`)
   fs.moveSync(path.resolve(tempDirPath, unzipServerDirName), serverPath, { overwrite: true })
 
+  log('Server 模版同步完成')
+
+  //--------------------------------------------------------------
+  const unzipVueDirName = `${VUE_REPO.repoName}-${repo.vueBranch}`
+  const unzipVueDirPath = path.resolve(tempDirPath, unzipVueDirName)
+
   log(`正在解压${repo.vueBranch}-vue代码`)
   const vueZip = new AdmZip(path.resolve(tempDirPath, `${repo.vueBranch}-vue.zip`))
   vueZip.extractAllTo(tempDirPath, true)
 
-  const unzipVueDirName = `${VUE_REPO}-${repo.vueBranch}`
-
-  log('拷贝Vue代码')
+  log('移动Vue模版代码')
   const vuepath = path.resolve(tplPath, 'vue')
   fs.ensureDirSync(vuepath)
   fs.emptyDirSync(vuepath)
 
+  for(let i = 0; i < VUE_REPO.deleteFiles.length; i++) {
+    const dpath = path.resolve(unzipVueDirPath, VUE_REPO.deleteFiles[i])
+    log(`执行删除 ${dpath}`)
+    fs.removeSync(dpath)
+  }
+
   log(`移动${unzipVueDirName}目录至${vuepath}`)
   fs.moveSync(path.resolve(tempDirPath, unzipVueDirName), vuepath, { overwrite: true })
 
-  log('同步模版完成')
+  log('Vue 模版同步完成')
+
+  //--------------------------------------------------------------
 })()
