@@ -29,6 +29,7 @@ function registerCommand(argv) {
 		.version(`@sfadminltd/cli ${pkg.version}`, '-v, --version')
 		.usage('<command> [options]')
 		.option('-d, --debug', 'open debug mode', false)
+		.addHelpCommand(false)
 
 	program
 		.command('check')
