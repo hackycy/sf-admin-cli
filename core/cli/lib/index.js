@@ -38,6 +38,13 @@ function registerCommand(argv) {
 			process.env.SF_CLI_USE_TAOBAO_REGISTRY = this.opts().taobao
 			require('@sfadminltd/check')(pkg.version, pkg.name)
 		})
+
+	program
+		.command('info')
+		.description('print debugging information about your environment')
+		.action(function() {
+			require('@sfadminltd/info')()
+		})
 	
 	// more help text
 	program.addHelpText('after', 
