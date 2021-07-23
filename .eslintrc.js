@@ -1,3 +1,5 @@
+'use strict'
+
 module.exports = {
   extends: ['eslint:recommended'],
   env: {
@@ -10,7 +12,8 @@ module.exports = {
   rules: {
     quotes: [2, 'single'],
     semi: ['error', 'never'],
-    'comma-dangle': ['error', 'never']
+    'comma-dangle': ['error', 'never'],
+    strict: ['error', 'global']
   },
   overrides: [
     {

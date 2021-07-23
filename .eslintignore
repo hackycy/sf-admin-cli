@@ -3,3 +3,4 @@ template
 packages/test
 temp
 dist
+bin
