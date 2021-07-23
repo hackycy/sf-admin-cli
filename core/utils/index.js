@@ -1,15 +1,10 @@
 'use strict'
 
-const semver = require('semver')
-const chalk = require('chalk')
-const log = require('./lib/log')
-const npm = require('./lib/npm')
-const spinner = require('./lib/spinner')
-const fs = require('fs-extra')
+// export
+;['env', 'npm', 'spinner', 'log'].forEach((m) => {
+  exports[m] = require(`./lib/${m}`)
+})
 
-exports.npm = npm
-exports.spinner = spinner
-exports.log = log
-exports.semver = semver
-exports.chalk = chalk
-exports.fs = fs
+exports.semver = require('semver')
+exports.chalk = require('chalk')
+exports.fs = require('fs-extra')
