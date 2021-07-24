@@ -1,7 +1,9 @@
 'use strict'
 
-module.exports = create
+async function create() {
 
-function create() {
-  // TODO
+}
+
+module.exports = (...args) => {
+  return create(...args).catch(() => {})
 }
