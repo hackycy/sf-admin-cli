@@ -8,3 +8,14 @@
 exports.semver = require('semver')
 exports.chalk = require('chalk')
 exports.fs = require('fs-extra')
+
+/**
+ * exit
+ */
+exports.exit = function(exitCode) {
+  if (exitCode === 0) {
+    throw new Error(`Process exited with code ${exitCode}`)
+  } else {
+    process.exit(exitCode)
+  }
+}
