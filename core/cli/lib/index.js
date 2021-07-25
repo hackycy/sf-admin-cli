@@ -1,9 +1,10 @@
 'use strict'
 
 const pkg = require('../package.json')
-const { log, chalk, semver } = require('@sfadminltd/utils')
+const { log, chalk, semver, exit } = require('@sfadminltd/utils')
 const rootCheck = require('root-check')
-// const leven = require('leven')
+const leven = require('leven')
+const minimist = require('minimist')
 
 /**
  * 脚手架初始化
@@ -21,6 +22,7 @@ async function init(argv) {
 
 /**
  * commander 命令注册
+ * 约定：尖括号 <> 代表required，方括号 [] 代表optional
  */
 function registerCommand(argv) {
 	const program = require('commander')
@@ -32,12 +34,18 @@ function registerCommand(argv) {
 		.addHelpCommand(false)
 
 	program
-		.command('check')
-		.description('check the latest cli version number')
-		.option('-t, --taobao', 'use taobao npm registry when fetch remote version (only for npm)', false)
-		.action(function() {
-			process.env.SF_CLI_USE_TAOBAO_REGISTRY = this.opts().taobao
-			require('@sfadminltd/check')(pkg.version, pkg.name)
+		.command('create <project-name>')
+		.description('create a new project powered by sf-admin-cli')
+		.option('-t, --taobao', 'Use taobao npm registry when fetch remote version (only for npm)', false)
+		.option('-g, --git', 'Force git initialization with initial commit message')
+		.option('-n, --no-git', 'Skip git initialization')
+		.option('-f, --force', 'Overwrite target directory if it exists')
+		.option('--skip-update', 'Skip check cli update check')
+		.action(function(name, options) {
+			if (minimist(argv.slice(3))._.length > 1) {
+				log.warn('You provided more than one argument. The first one will be used as the project\'s name, the rest are ignored.')
+			}
+			require('@sfadminltd/create')(name, options)
 		})
 
 	program
@@ -65,10 +73,21 @@ function registerCommand(argv) {
 
 		// 尝试推荐命令
 		const availableCommands = program.commands.map(cmd => cmd.name())
-
 		log.verbose('avaliable commands: ', availableCommands)
 
-		// exit
+		let suggestion = null
+
+		availableCommands.forEach(cmd => {
+			const isBestMatch = leven(cmd, cwd) < leven(suggestion || '', cwd)
+			if (leven(cmd, cwd) < 3 && isBestMatch) {
+				suggestion = cmd
+			}
+		})
+		if (suggestion) {
+			console.log('  ' + chalk.red(`Did you mean ${chalk.yellowBright(suggestion)}?`))
+		}
+
+		// 设置 process.exitCode 属性来告诉进程在进程正常退出时使用哪个退出码
 		process.exitCode = 1
 	})
 
@@ -83,7 +102,7 @@ function registerCommand(argv) {
 	const version = process.version
 	if (!semver.satisfies(version, '>=12.0.0')) {
 		log.error(`required Node version must be greater than 12, current Node version: ${chalk.yellow(semver.clean(version))}`)
-		process.exit(1)
+		exit(1)
 	}
 }
 

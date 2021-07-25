@@ -33,11 +33,12 @@
     "access": "public"
   },
   "dependencies": {
-    "@sfadminltd/check": "file:../../commands/check",
+    "@sfadminltd/create": "file:../../commands/create",
     "@sfadminltd/info": "file:../../commands/info",
     "@sfadminltd/utils": "file:../utils",
     "commander": "^8.0.0",
     "leven": "^3.1.0",
+    "minimist": "^1.2.5",
     "root-check": "^1.0.0"
   }
 }
