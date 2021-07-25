@@ -8,6 +8,7 @@
 exports.semver = require('semver')
 exports.chalk = require('chalk')
 exports.fs = require('fs-extra')
+exports.inquirer = require('inquirer')
 
 /**
  * exit
