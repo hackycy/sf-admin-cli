@@ -40,7 +40,6 @@ function registerCommand(argv) {
 		.option('-g, --git', 'Force git initialization with initial commit message')
 		.option('-n, --no-git', 'Skip git initialization')
 		.option('-f, --force', 'Overwrite target directory if it exists')
-		.option('--skip-update', 'Skip check cli update check', false)
 		.action(function(name, options) {
 			if (minimist(argv.slice(3))._.length > 1) {
 				log.warn('You provided more than one argument. The first one will be used as the project\'s name, the rest are ignored.')
