@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "prepublish": "rimraf commands/**/package-lock.json core/**/package-lock.json",
-    "lint": "eslint \"{commands,core}/**/*.js\" --fix",
+    "lint": "eslint \"{commands,core,scripts}/**/*.js\" --fix",
+    "lint-nofix": "eslint \"{commands,core,scripts}/**/*.js\"",
     "publish": "npm run prepublish && lerna publish",
     "clean": "node ./scripts/clean.js",
     "sync": "node ./scripts/syncTemplate.js"
