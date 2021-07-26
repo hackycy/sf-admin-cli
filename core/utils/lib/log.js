@@ -1,6 +1,7 @@
 'use strict'
 
 const log = require('npmlog')
+const readline = require('linebyline')
 
 log.heading = 'SF-ADMIN-CLI'
 
@@ -16,6 +17,18 @@ log.openDebugMode = function (bool = false) {
   }
   // set env
   process.env.SF_CLI_DEBUG = bool
+}
+
+log.clearConsole = function (title) {
+  if (process.stdout.isTTY) {
+    const blank = '\n'.repeat(process.stdout.rows)
+    console.log(blank)
+    readline.cursorTo(process.stdout, 0, 0)
+    readline.clearScreenDown(process.stdout)
+    if (title) {
+      console.log(title)
+    }
+  }
 }
 
 module.exports = log

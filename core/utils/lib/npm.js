@@ -2,6 +2,8 @@
 
 const request = require('axios')
 const semver = require('semver')
+const execa = require('execa')
+const { hasYarn } = require('./env')
 
 /**
  * 获取远程仓库中最新的版本号
@@ -32,7 +34,25 @@ function getDefaultRegistry(shouldUseTaobao = false) {
     : 'https://registry.npmjs.org'
 }
 
+/**
+ * get global install command
+ * npm i -g / yarn global add
+ */
+function getGlobalInstallCommand() {
+  if (hasYarn()) {
+    const { stdout: yarnGlobalDir } = execa.sync('yarn', ['global', 'dir'])
+    if (__dirname.includes(yarnGlobalDir)) {
+      return 'yarn global add'
+    } 
+  }
+  const { stdout: npmGlobalPrefix } = execa.sync('npm', ['config', 'get', 'prefix'])
+  if (__dirname.includes(npmGlobalPrefix)) {
+    return 'npm i -g'
+  }
+}
+
 module.exports = {
   getPackageLastVersion,
-  getDefaultRegistry
+  getDefaultRegistry,
+  getGlobalInstallCommand
 }

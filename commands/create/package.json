@@ -27,6 +27,8 @@
     "url": "https://github.com/hackycy/sf-admin-cli/issues"
   },
   "dependencies": {
-    "@sfadminltd/utils": "file:../../core/utils"
+    "@sfadminltd/utils": "file:../../core/utils",
+    "boxen": "^5.0.1",
+    "validate-npm-package-name": "^3.0.0"
   }
 }

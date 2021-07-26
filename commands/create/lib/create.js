@@ -1,7 +1,9 @@
 'use strict'
 
-async function create() {
+const { log } = require('@sfadminltd/utils')
 
+async function create() {
+  log.clearConsole()
 }
 
 module.exports = (...args) => {
