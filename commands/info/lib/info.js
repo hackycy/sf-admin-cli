@@ -3,14 +3,16 @@
 const envinfo = require('envinfo')
 const { log, chalk, spinner } = require('@sfadminltd/utils')
 
-async function getEnvInfo() {
+async function getEnvInfo({ depend }) {
   console.log(chalk.cyan(chalk.bold('\nEnvironment Info:')))
-	spinner.logWithSpinner('Loading...')
+  spinner.logWithSpinner('Loading...')
   const info = await envinfo.run(
     {
       System: ['OS', 'CPU'],
       Binaries: ['Node', 'Yarn', 'npm'],
-      npmPackages: '/**/{typescript,*vue*,@vue/*/,@nestjs/*/,@midwayjs/*/}',
+      npmPackages: `/**/{typescript,*vue*,@vue/*/,@nestjs/*/,@midwayjs/*/${
+        depend && depend.length > 0 ? ',' + depend.join(',') : ''
+      }}`,
       npmGlobalPackages: ['@sfadminltd/cli']
     },
     {
@@ -20,7 +22,7 @@ async function getEnvInfo() {
     }
   )
   spinner.stopSpinner(false)
-	console.log(info)
+  console.log(info)
 }
 
 module.exports = (...args) => {

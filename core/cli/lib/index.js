@@ -30,7 +30,7 @@ function registerCommand(argv) {
 		.name(Object.keys(pkg.bin)[0])
 		.version(`@sfadminltd/cli ${pkg.version}`, '-v, --version')
 		.usage('<command> [options]')
-		.option('-d, --debug', 'open debug mode', false)
+		.option('-d, --debug', 'Open debug mode', false)
 		.addHelpCommand(false)
 
 	program
@@ -51,8 +51,9 @@ function registerCommand(argv) {
 	program
 		.command('info')
 		.description('print debugging information about your environment')
-		.action(function() {
-			require('@sfadminltd/info')()
+		.option('--depend [depends...]', 'Search specified dependency')
+		.action(function(options) {
+			require('@sfadminltd/info')(options)
 		})
 	
 	// more help text
