@@ -17,7 +17,6 @@ exports.hasYarn = () => {
   }
 }
 
-
 exports.hasGit = () => {
   if (_hasGit != null) {
     return _hasGit
@@ -28,4 +27,15 @@ exports.hasGit = () => {
   } catch (e) {
     return (_hasGit = false)
   }
+}
+
+exports.hasProjectGit = (cwd) => {
+  let result
+  try {
+    execSync('git status', { stdio: 'ignore', cwd })
+    result = true
+  } catch(e) {
+    result = false
+  }
+  return result
 }

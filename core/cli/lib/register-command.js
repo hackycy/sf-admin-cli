@@ -21,10 +21,10 @@ const { log, chalk } = require('@sfadminltd/utils')
 	program
 		.command('create <project-name>')
 		.description('create a new project powered by sf-admin-cli')
-		.option('-t, --taobao', 'Use taobao npm registry when fetch remote version (only for npm)', false)
-		.option('-g, --git', 'Force git initialization with initial commit message')
-		.option('-n, --no-git', 'Skip git initialization')
-		.option('-f, --force', 'Overwrite target directory if it exists')
+		.option('-t, --taobao', 'use taobao npm registry when fetch remote version (only for npm)', false)
+		.option('-g, --git [message]', 'force git initialization with initial commit message')
+		.option('-n, --no-git', 'skip git initialization')
+		.option('-f, --force', 'overwrite target directory if it exists')
 		.action(function(name, options) {
 			if (minimist(argv.slice(3))._.length > 1) {
 				log.warn('You provided more than one argument. The first one will be used as the project\'s name, the rest are ignored.')
@@ -35,7 +35,7 @@ const { log, chalk } = require('@sfadminltd/utils')
 	program
 		.command('info')
 		.description('print debugging information about your environment')
-		.option('--depend [depends...]', 'Search specified dependency')
+		.option('--depend [depends...]', 'search specified dependency')
 		.action(function(options) {
 			require('@sfadminltd/info')(pkg.name, options)
 		})
