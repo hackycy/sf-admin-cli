@@ -6,7 +6,7 @@ const { log, npm, spinner, chalk, semver } = require('@sfadminltd/utils')
  * 检查当前脚手架版本号
  */
 async function checkVersion(installedVersion, id, shouldUseTaobao) {
-  let title = chalk.bold.blue(`SF CLI v${installedVersion}`)
+  let title = ''
 
   spinner.logWithSpinner('Loading...\n')
 
@@ -41,7 +41,7 @@ async function checkVersion(installedVersion, id, shouldUseTaobao) {
         padding: 1
       })
 
-      title += `\n${upgradeBox}\n`
+      title += `${upgradeBox}\n`
     }
   } catch (err) {
     spinner.stopSpinner(false)

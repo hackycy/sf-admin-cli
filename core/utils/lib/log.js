@@ -2,6 +2,7 @@
 
 const log = require('npmlog')
 const readline = require('readline')
+const chalk = require('chalk')
 
 log.heading = 'SF-ADMIN-CLI'
 
@@ -25,6 +26,7 @@ log.clearConsole = function (title) {
     console.log(blank)
     readline.cursorTo(process.stdout, 0, 0)
     readline.clearScreenDown(process.stdout)
+    console.log(chalk.bold.blue(`SF ADMIN CLI v${process.env.SF_CLI_VERSION}`))
     if (title) {
       console.log(title)
     }

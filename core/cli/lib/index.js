@@ -16,6 +16,10 @@ async function init(argv) {
 	// 检查是否在sudo下运行，是则自动降级
 	rootCheck()
 
+	// global env
+	process.env.SF_CLI_VERSION = pkg.version
+	process.env.SF_CLI_NAME = pkg.name
+
 	// command 注册
 	registerCommand(argv)
 }
@@ -44,10 +48,7 @@ function registerCommand(argv) {
 			if (minimist(argv.slice(3))._.length > 1) {
 				log.warn('You provided more than one argument. The first one will be used as the project\'s name, the rest are ignored.')
 			}
-			require('@sfadminltd/create')(name, options, {
-				name: pkg.name,
-				version: pkg.version
-			})
+			require('@sfadminltd/create')(name, options)
 		})
 
 	program
