@@ -1,9 +1,10 @@
 'use strict'
 
-const { log } = require('@sfadminltd/utils')
+const { checkVersion } = require('./check-version')
 
-async function create() {
-  log.clearConsole()
+async function create(projectName, options, context) {
+  // 检查更新
+  await checkVersion(context.version, context.name, options.taobao)
 }
 
 module.exports = (...args) => {

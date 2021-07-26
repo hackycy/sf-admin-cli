@@ -1,7 +1,7 @@
 'use strict'
 
 const log = require('npmlog')
-const readline = require('linebyline')
+const readline = require('readline')
 
 log.heading = 'SF-ADMIN-CLI'
 
