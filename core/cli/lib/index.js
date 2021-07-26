@@ -53,7 +53,7 @@ function registerCommand(argv) {
 		.description('print debugging information about your environment')
 		.option('--depend [depends...]', 'Search specified dependency')
 		.action(function(options) {
-			require('@sfadminltd/info')(options)
+			require('@sfadminltd/info')(pkg.name, options)
 		})
 	
 	// more help text
