@@ -4,8 +4,9 @@ const path = require('path')
 const { checkVersion } = require('./check-version')
 const { validateProjectName } = require('./validate')
 const { resolveTargetDir, resolvePreset } = require('./prompt')
-const { log, fs } = require('@sfadminltd/utils')
+const { log, fs, chalk } = require('@sfadminltd/utils')
 const { loadPreset, tpl } = require('./load-preset')
+const { shouldInitGit } = require('./should-init-git')
 
 async function create(projectName, options) {
   // 检查更新
@@ -38,8 +39,19 @@ async function create(projectName, options) {
   // 模版目录
   const templatePath = path.resolve(__dirname, '../', tpl, action)
 
+  log.clearConsole()
+
+  log.info(`Creating project in ${chalk.yellow(targetDir)}`)
+
+  // 确保目录存在
   fs.ensureDirSync(targetDir)
   fs.copySync(templatePath, targetDir)
+
+  // 是否需要初始化git
+  const initGit = shouldInitGit(options, targetDir)
+  if (initGit) {
+    log.info('Initializing git repository...')
+  }
 }
 
 module.exports = (...args) => {
