@@ -36,7 +36,7 @@ const { log, chalk } = require('@sfadminltd/utils')
 	program
 		.command('info')
 		.description('print debugging information about your environment')
-		.option('--depend [depends...]', 'search specified dependency')
+		.option('--dep [deps...]', 'search specified dependency')
 		.action(function(options) {
 			require('@sfadminltd/info')(pkg.name, options)
 		})
