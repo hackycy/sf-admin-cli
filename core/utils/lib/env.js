@@ -1,6 +1,8 @@
 'use strict'
 
 const { execSync } = require('child_process')
+const fs = require('fs')
+const path = require('path')
 
 let _hasYarn
 let _hasGit
@@ -52,3 +54,25 @@ exports.hasDocker = () => {
     return (_hasDocker = false)
   }
 }
+
+exports.hasProjectNpm = (cwd) => {
+  const lockFile = path.join(cwd, 'package-lock.json')
+  const result = fs.existsSync(lockFile)
+  return result
+}
+
+exports.tryRun = (cmd) => {
+  try {
+    return execSync(cmd, {
+      stdio: [0, 'pipe', 'ignore'],
+      timeout: 10000
+    }).toString().trim()
+  } catch(e) {
+    return ''
+  }
+}
+
+// OS
+exports.isWindows = process.platform === 'win32'
+exports.isMacintosh = process.platform === 'darwin'
+exports.isLinux = process.platform === 'linux'
