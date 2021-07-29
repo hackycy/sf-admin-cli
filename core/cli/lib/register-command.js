@@ -24,7 +24,7 @@ const { log, chalk } = require('@sfadminltd/utils')
 		.option('-t, --taobao', 'use taobao npm registry when fetch remote version (only for npm)', false)
 		.option('-g, --git [message]', 'force git initialization with initial commit message', 'init')
 		.option('-n, --no-git', 'skip git initialization')
-		.option('-p, --split-git', 'initialize the vue and server git separately')
+		.option('-p, --split-git', 'initialize the vue and server git separately', false)
 		.option('-f, --force', 'overwrite target directory if it exists')
 		.action(function(name, options) {
 			if (minimist(argv.slice(3))._.length > 1) {

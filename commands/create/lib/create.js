@@ -5,17 +5,20 @@ const { checkVersion } = require('./check-version')
 const { validateProjectName } = require('./validate')
 const { resolveTargetDir, resolvePreset } = require('./prompt')
 const { log, fs, chalk } = require('@sfadminltd/utils')
-const { loadPreset, tpl } = require('./load-preset')
+const { loadPreset, serverTpl, vueTpl, tpl } = require('./load-preset')
 const { shouldInitGit } = require('./should-init-git')
+const run = require('./run')
 
 async function create(projectName, options) {
   // 检查更新
   await checkVersion(process.env.SF_CLI_VERSION, process.env.SF_CLI_NAME, options.taobao)
 
   const cwd = process.cwd()
+
   const inCurrent = projectName === '.'
   const name = inCurrent ? path.relative('../', cwd) : projectName
   const targetDir = path.resolve(cwd, projectName || '.')
+  log.verbose(`cwd: ${cwd}, target: ${targetDir}`)
 
   // 校验 输入的project name
   validateProjectName(name)
@@ -34,6 +37,7 @@ async function create(projectName, options) {
 
   log.clearConsole()
 
+  // 选择模板的预设值
   const action = await resolvePreset(presets)
 
   // 模版目录
@@ -47,10 +51,49 @@ async function create(projectName, options) {
   fs.ensureDirSync(targetDir)
   fs.copySync(templatePath, targetDir)
 
-  // 是否需要初始化git
+  // git init
   const initGit = shouldInitGit(options, targetDir)
+  const splitInitGit = options.splitGit
   if (initGit) {
     log.info('Initializing git repository...')
+    if (!splitInitGit) {
+      await run(targetDir, 'git init')
+    } else {
+      // 分开初始化
+      await run(path.join(targetDir, serverTpl), 'git init')
+      await run(path.join(targetDir, vueTpl), 'git init')
+    }
+  }
+
+  // git commit
+  let gitCommitFailed = false
+  if (initGit) {
+    const msg = typeof options.git === 'string' ? options.git : 'init'
+    if (!splitInitGit) {
+      await run(targetDir, 'git add -A')
+      try {
+        await run(targetDir, 'git', ['commit', '-m', msg, '--no-verify'])
+      } catch (e) {
+        gitCommitFailed = true
+      }
+    } else {
+      // 分开初始化
+      await run(path.join(targetDir, serverTpl), 'git add -A')
+      await run(path.join(targetDir, vueTpl), 'git add -A')
+      try {
+        await run(path.join(targetDir, serverTpl), 'git', ['commit', '-m', msg, '--no-verify'])
+        await run(path.join(targetDir, vueTpl), 'git', ['commit', '-m', msg, '--no-verify'])
+      } catch (e) {
+        gitCommitFailed = true
+      }
+    }
+  }
+
+  // git commit初始化失败提示
+  if (gitCommitFailed) {
+    log.warn(
+      'Skipped git commit due to missing username and email in git config, or failed to sign commit.'
+    )
   }
 }
 
