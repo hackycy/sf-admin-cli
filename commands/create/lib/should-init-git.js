@@ -9,11 +9,11 @@ exports.shouldInitGit = function(cliOptions, cwd) {
     return false
   }
   // -git
-  if (typeof cliOptions.git === 'string') {
-    return true
-  }
   if (typeof cliOptions.git === 'boolean') {
     return cliOptions.git
+  }
+  if (cliOptions.git === 'false') {
+    return false
   }
   // default: true unless already in a git repo
   return !hasProjectGit(cwd)
