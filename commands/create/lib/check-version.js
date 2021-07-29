@@ -19,7 +19,7 @@ async function checkVersion(installedVersion, id, shouldUseTaobao) {
     )
     spinner.stopSpinner(false)
     log.verbose(
-      `remote last npm version：${version}，current installed version：${installedVersion}`
+      `Remote last npm version：${version}，current installed version：${installedVersion}`
     )
     
     // 如果已安装版本小于远程npm版本则提示更新

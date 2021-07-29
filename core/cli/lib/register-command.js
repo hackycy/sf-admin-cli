@@ -59,7 +59,7 @@ const { log, chalk } = require('@sfadminltd/utils')
 
 		// 尝试推荐命令
 		const availableCommands = program.commands.map(cmd => cmd.name())
-		log.verbose('avaliable commands: ', availableCommands)
+		log.verbose('Avaliable commands: ', availableCommands)
 
 		let suggestion = null
 

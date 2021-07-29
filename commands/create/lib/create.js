@@ -21,7 +21,7 @@ async function create(projectName, options) {
   const targetServerDir = path.resolve(targetDir, serverTpl)
   const targetVueDir = path.resolve(targetDir, vueTpl)
 
-  log.verbose(`cwd: ${cwd}, target: ${targetDir}`)
+  log.verbose(`Cwd: ${cwd}, Target: ${targetDir}`)
 
   // 校验 输入的project name
   validateProjectName(name)
@@ -34,9 +34,9 @@ async function create(projectName, options) {
   // load preset
   const presets = loadPreset()
   if (presets.length <= 0) {
-    throw new Error('current preset is empty')
+    throw new Error('Current preset is empty')
   }
-  log.verbose('local preset', presets.join(','))
+  log.verbose('Local preset', presets.join(','))
 
   log.clearConsole()
 

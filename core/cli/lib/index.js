@@ -29,7 +29,7 @@ async function init(argv) {
  function checkNodeVersion() {
 	const version = process.version
 	if (!semver.satisfies(version, '>=12.0.0')) {
-		log.error(`required Node version must be greater than 12, current Node version: ${chalk.yellow(semver.clean(version))}`)
+		log.error(`Required Node version must be greater than 12, current Node version: ${chalk.yellow(semver.clean(version))}`)
 		exit(1)
 	}
 }
