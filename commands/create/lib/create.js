@@ -18,6 +18,9 @@ async function create(projectName, options) {
   const inCurrent = projectName === '.'
   const name = inCurrent ? path.relative('../', cwd) : projectName
   const targetDir = path.resolve(cwd, projectName || '.')
+  const targetServerDir = path.resolve(targetDir, serverTpl)
+  const targetVueDir = path.resolve(targetDir, vueTpl)
+
   log.verbose(`cwd: ${cwd}, target: ${targetDir}`)
 
   // 校验 输入的project name
@@ -60,8 +63,8 @@ async function create(projectName, options) {
       await run(targetDir, 'git init')
     } else {
       // 分开初始化
-      await run(path.join(targetDir, serverTpl), 'git init')
-      await run(path.join(targetDir, vueTpl), 'git init')
+      await run(targetServerDir, 'git init')
+      await run(targetVueDir, 'git init')
     }
   }
 
@@ -78,11 +81,11 @@ async function create(projectName, options) {
       }
     } else {
       // 分开初始化
-      await run(path.join(targetDir, serverTpl), 'git add -A')
-      await run(path.join(targetDir, vueTpl), 'git add -A')
+      await run(targetServerDir, 'git add -A')
+      await run(targetVueDir, 'git add -A')
       try {
-        await run(path.join(targetDir, serverTpl), 'git', ['commit', '-m', msg, '--no-verify'])
-        await run(path.join(targetDir, vueTpl), 'git', ['commit', '-m', msg, '--no-verify'])
+        await run(targetServerDir, 'git', ['commit', '-m', msg, '--no-verify'])
+        await run(targetVueDir, 'git', ['commit', '-m', msg, '--no-verify'])
       } catch (e) {
         gitCommitFailed = true
       }
