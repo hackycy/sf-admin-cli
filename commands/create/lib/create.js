@@ -89,6 +89,8 @@ async function create(projectName, options) {
     }
   }
 
+  log.notice(`🎉  Successfully created project ${chalk.yellow(name)}.`)
+
   // git commit初始化失败提示
   if (gitCommitFailed) {
     log.warn(
