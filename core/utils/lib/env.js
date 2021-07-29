@@ -61,15 +61,13 @@ exports.hasProjectNpm = (cwd) => {
   return result
 }
 
-exports.tryRun = (cmd) => {
-  try {
-    return execSync(cmd, {
-      stdio: [0, 'pipe', 'ignore'],
-      timeout: 10000
-    }).toString().trim()
-  } catch(e) {
-    return ''
+exports.hasProjectYarn = (cwd) => {
+  const lockFile = path.join(cwd, 'yarn.lock') 
+  const result = fs.existsSync(lockFile)
+  if (result && !exports.hasYarn()) {
+    throw new Error('The project seems to require yarn but it\'s not installed.')
   }
+  return result
 }
 
 // OS
