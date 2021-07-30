@@ -27,6 +27,9 @@
   "bugs": {
     "url": "https://github.com/hackycy/sf-admin-cli/issues"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@sfadminltd/utils": "file:../../core/utils",
     "envinfo": "^7.8.1"
