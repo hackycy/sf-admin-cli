@@ -4,10 +4,11 @@ module.exports = {
   extends: ['eslint:recommended'],
   env: {
     node: true,
-    es6: true
+    es6: true,
+    commonjs: true
   },
   parserOptions: {
-    ecmaVersion: 8
+    ecmaVersion: 2021
   },
   rules: {
     quotes: [2, 'single'],
