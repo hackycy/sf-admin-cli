@@ -4,7 +4,7 @@ const path = require('path')
 const { checkVersion } = require('./check-version')
 const { validateProjectName } = require('./validate')
 const { resolveTargetDir, resolvePreset, resolvePackageManager } = require('./prompt')
-const { log, fs, chalk } = require('@sfadminltd/utils')
+const { log, fs, chalk, pkg } = require('@sfadminltd/utils')
 const { loadPreset, serverTpl, vueTpl, tpl } = require('./load-preset')
 const { shouldInitGit } = require('./should-init-git')
 const generateReadme = require('./generate-readme')
@@ -60,6 +60,25 @@ async function create(projectName, options) {
   // 确保目录存在
   fs.ensureDirSync(targetDir)
   fs.copySync(templatePath, targetDir)
+
+  log.info('Updating package.json...')
+
+  writeFileTree(targetServerDir, {
+    'package.json': JSON.stringify(Object.assign(pkg.resolvePkg(targetServerDir), {
+      name: `${name}-${serverTpl}`,
+      version: '0.1.0',
+      private: true,
+      description: `Create By sf-${action}-admin`
+    }), null, 2)
+  })
+  writeFileTree(targetVueDir, {
+    'package.json': JSON.stringify(Object.assign(pkg.resolvePkg(targetVueDir), {
+      name: `${name}-${vueTpl}`,
+      version: '0.1.0',
+      private: true,
+      description: 'Create By sf-vue-admin'
+    }), null, 2)
+  })
 
   // git init
   const initGit = shouldInitGit(options, targetDir)
