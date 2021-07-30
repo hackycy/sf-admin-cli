@@ -3,11 +3,13 @@
 const path = require('path')
 const { checkVersion } = require('./check-version')
 const { validateProjectName } = require('./validate')
-const { resolveTargetDir, resolvePreset } = require('./prompt')
+const { resolveTargetDir, resolvePreset, resolvePackageManager } = require('./prompt')
 const { log, fs, chalk } = require('@sfadminltd/utils')
 const { loadPreset, serverTpl, vueTpl, tpl } = require('./load-preset')
 const { shouldInitGit } = require('./should-init-git')
+const generateReadme = require('./generate-readme')
 const run = require('./run')
+const writeFileTree = require('./write-file-tree')
 
 async function create(projectName, options) {
   // 检查更新
@@ -43,6 +45,11 @@ async function create(projectName, options) {
   // 选择模板的预设值
   const action = await resolvePreset(presets)
 
+  log.clearConsole()
+
+  // 选择npm管理器
+  const packageManager = await resolvePackageManager()
+
   // 模版目录
   const templatePath = path.resolve(__dirname, '../', tpl, action)
 
@@ -68,6 +75,15 @@ async function create(projectName, options) {
     }
   }
 
+  // gen readme
+  log.info('Generating README.md...')
+  writeFileTree(targetServerDir, {
+    'README.md': generateReadme(serverTpl, name, packageManager)
+  })
+  writeFileTree(targetVueDir, {
+    'README.md': generateReadme(vueTpl, name, packageManager)
+  })
+
   // git commit
   let gitCommitFailed = false
   if (initGit) {
@@ -92,7 +108,7 @@ async function create(projectName, options) {
     }
   }
 
-  log.notice(`Successfully created project ${chalk.yellow(name)}.`)
+  log.info(`Successfully created project ${chalk.yellow(name)}.`)
 
   // git commit初始化失败提示
   if (gitCommitFailed) {

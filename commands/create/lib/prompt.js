@@ -1,6 +1,6 @@
 'use strict'
 
-const { inquirer, fs, log, chalk } = require('@sfadminltd/utils')
+const { inquirer, fs, log, chalk, env } = require('@sfadminltd/utils')
 
 /**
  * 判断文件夹是否覆盖等操作，无命令提供时则弹出选择提示
@@ -72,7 +72,29 @@ async function resolvePreset(presets) {
   return action
 }
 
+/**
+ * 选择Yarn 或者 Npm管理
+ */
+ async function resolvePackageManager() {
+  if (env.hasYarn()) {
+    const { action } = await inquirer.prompt([
+      {
+        name: 'action',
+        type: 'list',
+        message: 'Pick the package manager to use when installing dependencies',
+        choices: [
+          { name: 'Npm', value: 'npm' },
+          { name: 'Yarn', value: 'yarn' }
+        ]
+      }
+    ])
+    return action
+  }
+  return 'npm'
+}
+
 module.exports = {
   resolveTargetDir,
-  resolvePreset
+  resolvePreset,
+  resolvePackageManager
 }
