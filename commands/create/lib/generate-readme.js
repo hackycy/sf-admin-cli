@@ -5,7 +5,7 @@
  * @param {server|vue} type
  * @returns readme string
  */
-module.exports = function generateReadme(type, name, packageManager, action) {
+module.exports = function generateReadme(type, name, packageManager) {
   return [
     `# ${name}-${type}\n`,
     '## 项目初始化',
@@ -25,7 +25,7 @@ module.exports = function generateReadme(type, name, packageManager, action) {
           '手动导入sql文件下的所有sql文件',
           '',
           '### 更改开发环境配置\n',
-          `手动修改配置文件${action === 'nest' ? 'config.development.ts' : 'config.local.ts'}，生产环境同理`,
+          '修改对应运行环境下的配置文件`config.${env}.ts`',
           ''
         ]
       : []),
