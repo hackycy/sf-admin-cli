@@ -1,6 +1,6 @@
 {
   "name": "@sfadminltd/info",
-  "version": "0.0.3",
+  "version": "0.0.2",
   "description": "print info in your env",
   "keywords": [
     "sf",
@@ -28,7 +28,7 @@
     "url": "https://github.com/hackycy/sf-admin-cli/issues"
   },
   "dependencies": {
-    "@sfadminltd/utils": "file:../../core/utils",
-    "envinfo": "^7.8.1"
+    "envinfo": "^7.8.1",
+    "@sfadminltd/utils": "file:../../core/utils"
   }
 }
