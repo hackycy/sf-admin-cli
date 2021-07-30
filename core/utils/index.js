@@ -1,7 +1,7 @@
 'use strict'
 
 // export
-;['env', 'npm', 'spinner', 'log'].forEach((m) => {
+;['env', 'npm', 'spinner', 'log', 'pkg'].forEach((m) => {
   exports[m] = require(`./lib/${m}`)
 })
 
