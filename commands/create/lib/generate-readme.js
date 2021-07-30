@@ -33,6 +33,7 @@ module.exports = function generateReadme(type, name, packageManager) {
     '```',
     `${packageManager} ${packageManager !== 'yarn' ? 'run ' : ''}dev`,
     '```',
+    '',
     '# 版权声明\n',
     '> 请尊重原创，原项目遵循GNU General Public License v3.0协议',
     '> 原项目链接：',
