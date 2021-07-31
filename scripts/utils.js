@@ -2,14 +2,9 @@
 
 const axios = require('axios')
 const fs = require('fs')
+const log = require('npmlog')
 
-/**
- * basic log
- * @param {string} msg 
- */
-function log(msg) {
-  console.log(`>>>>>>>>>>>>> ${msg}`)
-}
+log.heading = 'SF TOOL'
 
 /**
  * 下载文件
