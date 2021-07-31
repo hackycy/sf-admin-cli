@@ -4,7 +4,7 @@ const axios = require('axios')
 const fs = require('fs')
 const log = require('npmlog')
 
-log.heading = 'SF TOOL'
+log.heading = 'sf tool'
 
 /**
  * 下载文件
