@@ -1,6 +1,7 @@
 {
   "name": "sf-admin-cli",
   "private": true,
+  "author": "hackycy",
   "description": "sf admin cli",
   "main": "index.js",
   "scripts": {
@@ -9,11 +10,13 @@
     "lint-nofix": "eslint \"{commands,core,scripts}/**/*.js\"",
     "release": "node scripts/release.js",
     "clean": "node scripts/clean.js",
-    "sync-tpl": "node scripts/syncTemplate.js"
+    "sync-tpl": "node scripts/sync-template.js"
   },
   "devDependencies": {
+    "@octokit/core": "^3.5.1",
     "adm-zip": "^0.5.5",
     "axios": "^0.21.1",
+    "chalk": "^4.1.2",
     "eslint": "^7.30.0",
     "eslint-plugin-prettier": "^3.4.0",
     "execa": "^5.1.1",
