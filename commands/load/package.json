@@ -27,6 +27,7 @@
     "url": "https://github.com/hackycy/sf-admin-cli/issues"
   },
   "dependencies": {
-    "@sfadminltd/utils": "file:../../core/utils"
+    "@sfadminltd/utils": "file:../../core/utils",
+    "mysql": "^2.18.1"
   }
 }
