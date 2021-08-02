@@ -32,6 +32,20 @@ const { log, chalk } = require('@sfadminltd/utils')
 			}
 			require('@sfadminltd/create')(name, options)
 		})
+	
+	program
+		.command('load')
+		.description('quickly import the sql script in the folder into the database')
+		.requiredOption('-u, --username <username>', 'specify MySQL username')
+		.requiredOption('-p, --password <password>', 'specify MySQL password')
+		.option('-e, --eval-dir [dir]', 'sql script directory, relative to the current execution directory', 'init')
+		.option('-o, --host [host]', 'specify host name or IP address', 'localhost')
+		.option('-p, --port [port]', 'specify the port number to try to connect to the MySQL server', '3306')
+		.option('-t, --table-name [name]', 'specify the name of the database that needs to be connected, it will be created automatically if it does not exist', 'sf-admin')
+		.option('-o, --overwrite', 'if the database already exists, it is forced to overwrite')
+		.action(function(options) {
+			require('@sfadminltd/load')(options)
+		})
 
 	program
 		.command('info')

@@ -1,7 +1,17 @@
 'use strict'
 
-module.exports = load
+const { log } = require('@sfadminltd/utils')
 
-function load() {
-    // TODO
+/**
+ * load sql script
+ */
+async function load() {
+	
 }
+
+module.exports = (...args) => {
+  return load(...args).catch((err) => {
+		log.error(`Load the script error, reason: ${err}`)
+  })
+}
+

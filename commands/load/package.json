@@ -25,5 +25,8 @@
   },
   "bugs": {
     "url": "https://github.com/hackycy/sf-admin-cli/issues"
+  },
+  "dependencies": {
+    "@sfadminltd/utils": "file:../../core/utils"
   }
 }
