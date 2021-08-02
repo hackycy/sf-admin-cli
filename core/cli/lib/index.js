@@ -8,7 +8,7 @@ const registerCommand = require('./register-command')
 /**
  * 脚手架初始化
  */
-async function init(argv) {
+function init(argv) {
 	// check node
 	checkNodeVersion()
 
