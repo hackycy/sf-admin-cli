@@ -43,6 +43,7 @@ const { log, chalk } = require('@sfadminltd/utils')
 		.option('-p, --port [port]', 'specify the port number to try to connect to the MySQL server', '3306')
 		.option('-b, --database-name [name]', 'specify the name of the database that needs to be connected, it will be created automatically if it does not exist', 'sf-admin')
 		.option('-o, --overwrite', 'if the database already exists, it is forced to overwrite')
+		.option('--sql-debug', 'open mysql debug log', false)
 		.action(function(options) {
 			require('@sfadminltd/load')(options)
 		})

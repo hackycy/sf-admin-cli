@@ -14,7 +14,7 @@ module.exports = function createConnection(cliOptions) {
       user: cliOptions.username,
       password: cliOptions.password,
       port: cliOptions.port,
-      debug: process.env.SF_CLI_DEBUG
+      debug: cliOptions.sqlDebug
     })
     connection.connect((err) => {
       if (err) {
