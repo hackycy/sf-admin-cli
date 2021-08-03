@@ -16,3 +16,5 @@ core/**/package-lock.json
 commands/**/test
 commands/**/node_modules
 commands/**/package-lock.json
+
+docs/.vuepress/dist

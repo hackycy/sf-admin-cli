@@ -10,7 +10,9 @@
     "lint-nofix": "eslint \"{commands,core,scripts}/**/*.js\"",
     "release": "node scripts/release.js",
     "clean": "node scripts/clean.js",
-    "sync-tpl": "node scripts/sync-template.js"
+    "sync-tpl": "node scripts/sync-template.js",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "devDependencies": {
     "@octokit/core": "^3.5.1",
