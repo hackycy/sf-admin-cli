@@ -2,6 +2,7 @@
 
 [![NPM version][npm-image]][npm-url]
 [![npm download][download-image]][download-url]
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
 [npm-image]: https://img.shields.io/npm/v/@sfadminltd/cli.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/@sfadminltd/cli
