@@ -52,10 +52,10 @@ async function load(options) {
   if (!shouldCreateDataBase && options.overwrite) {
     // 强制删除数据库
     await connection.queryPromisify('DROP DATABASE IF EXISTS ??', [databaseName])
-  } else {
-		log.notice('load', `The current database already exists: ${chalk.cyan(databaseName)}`, `but you can add the ${chalk.green('-o')} parameter to force overwrite (dangerous operation)`)
-		return
-	}
+  } else if (!shouldCreateDataBase) {
+    log.notice('load', `The current database already exists: ${chalk.cyan(databaseName)}`, `but you can add the ${chalk.green('-o')} parameter to force overwrite (dangerous operation)`)
+    return
+  }
 
 	// 创建数据库
 	await connection.queryPromisify('CREATE DATABASE ??', [databaseName])
@@ -71,6 +71,9 @@ async function load(options) {
     const pureSql = sql.replace(sqlDocRegExp, '')
     await connection.queryPromisify(pureSql)
   }
+
+  log.info('load', 'import sql done')
+  console.table(await connection.queryPromisify('SHOW TABLES'))
 }
 
 module.exports = (...args) => {
