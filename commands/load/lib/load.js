@@ -59,12 +59,24 @@ async function load(options) {
 
 	// 创建数据库
 	await connection.queryPromisify('CREATE DATABASE ??', [databaseName])
+  await connection.queryPromisify('USE ??', [databaseName])
+
+  // 移除掉sql文件注释
+  const sqlDocRegExp = /(\/\*([\s\S]*?)\*\/|([^:]|^)\/\/(.*)$)|--.*(\r\n|\r|\n)/gm
+
+  for(let i = 0; i < sqlFileList.length; i++) {
+    const fileAbsPath = path.join(targetDir, sqlFileList[i])
+    log.notice('load', `importing sql: ${chalk.yellow(fileAbsPath)}`)
+    const sql = fs.readFileSync(fileAbsPath, { encoding: 'utf8' })
+    const pureSql = sql.replace(sqlDocRegExp, '')
+    await connection.queryPromisify(pureSql)
+  }
 }
 
 module.exports = (...args) => {
   return load(...args)
     .catch((err) => {
-      log.error(`Load the script error, reason: ${err}`)
+      log.error('load', chalk.red(err))
     })
     .finally(() => {
       if (connection) {

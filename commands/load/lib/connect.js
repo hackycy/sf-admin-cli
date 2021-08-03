@@ -14,7 +14,8 @@ module.exports = function createConnection(cliOptions) {
       user: cliOptions.username,
       password: cliOptions.password,
       port: cliOptions.port,
-      debug: cliOptions.sqlDebug
+      debug: cliOptions.sqlDebug,
+      multipleStatements: true
     })
     connection.connect((err) => {
       if (err) {
