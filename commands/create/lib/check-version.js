@@ -19,6 +19,7 @@ async function checkVersion(installedVersion, id, shouldUseTaobao) {
     )
     spinner.stopSpinner(false)
     log.verbose(
+      'create',
       `Remote last npm version：${version}，current installed version：${installedVersion}`
     )
     
@@ -46,6 +47,7 @@ async function checkVersion(installedVersion, id, shouldUseTaobao) {
   } catch (err) {
     spinner.stopSpinner(false)
     log.error(
+      'create',
       `Unable to get the latest version number of remote npm. err msg: ${err}`
     )
   }

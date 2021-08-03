@@ -28,6 +28,6 @@ async function getEnvInfo(id, { depend }) {
 module.exports = (...args) => {
   return getEnvInfo(...args).catch((err) => {
     spinner.stopSpinner(false)
-    log.error(`Get env info error, reason: ${err}`)
+    log.error('info', `${chalk.red(err)}`)
   })
 }

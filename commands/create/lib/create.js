@@ -23,7 +23,7 @@ async function create(projectName, options) {
   const targetServerDir = path.resolve(targetDir, serverTpl)
   const targetVueDir = path.resolve(targetDir, vueTpl)
 
-  log.verbose(`Cwd: ${cwd}, Target: ${targetDir}`)
+  log.verbose('create', `Cwd: ${cwd}, Target: ${targetDir}`)
 
   // 校验 输入的project name
   validateProjectName(name)
@@ -38,7 +38,7 @@ async function create(projectName, options) {
   if (presets.length <= 0) {
     throw new Error('Current preset is empty')
   }
-  log.verbose('Local preset', presets.join(','))
+  log.verbose('create', 'Local preset', presets.join(','))
 
   log.clearConsole()
 
@@ -55,13 +55,13 @@ async function create(projectName, options) {
 
   log.clearConsole()
 
-  log.info(`Creating project in ${chalk.yellow(targetDir)}`)
+  log.info('create', `Creating project in ${chalk.yellow(targetDir)}`)
 
   // 确保目录存在
   fs.ensureDirSync(targetDir)
   fs.copySync(templatePath, targetDir)
 
-  log.info('Updating package.json...')
+  log.info('create', 'Updating package.json...')
 
   writeFileTree(targetServerDir, {
     'package.json': JSON.stringify(Object.assign(pkg.resolvePkg(targetServerDir), {
@@ -84,7 +84,7 @@ async function create(projectName, options) {
   const initGit = shouldInitGit(options, targetDir)
   const splitInitGit = options.splitGit
   if (initGit) {
-    log.info('Initializing git repository...')
+    log.info('create', 'Initializing git repository...')
     if (!splitInitGit) {
       await run(targetDir, 'git init')
     } else {
@@ -95,7 +95,7 @@ async function create(projectName, options) {
   }
 
   // gen readme
-  log.info('Generating README.md...')
+  log.info('create', 'Generating README.md...')
   writeFileTree(targetServerDir, {
     'README.md': generateReadme(serverTpl, name, packageManager)
   })
@@ -127,11 +127,12 @@ async function create(projectName, options) {
     }
   }
 
-  log.info(`Successfully created project ${chalk.yellow(name)}.`)
+  log.info('create', `Successfully created project ${chalk.yellow(name)}.`)
 
   // git commit初始化失败提示
   if (gitCommitFailed) {
     log.warn(
+      'create',
       'Skipped git commit due to missing username and email in git config, or failed to sign commit.'
     )
   }
@@ -139,6 +140,6 @@ async function create(projectName, options) {
 
 module.exports = (...args) => {
   return create(...args).catch((err) => {
-    log.error(err)
+    log.error('create', chalk.red(err))
   })
 }

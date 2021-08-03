@@ -7,12 +7,12 @@ exports.validateProjectName = function(name) {
   const result = vnpn(name)
   if (!result.validForNewPackages) {
     // 名称不合法
-    log.error(chalk.red(`Invalid project name: "${name}"`))
+    log.error('create', chalk.red(`Invalid project name: "${name}"`))
     result.errors && result.errors.forEach(err => {
-      log.error(chalk.red.dim(err))
+      log.error('create', chalk.red.dim(err))
     })
     result.warnings && result.warnings.forEach(warn => {
-      log.warn(chalk.red.dim(warn))
+      log.warn('create',  chalk.red.dim(warn))
     })
     exit(1)
   }

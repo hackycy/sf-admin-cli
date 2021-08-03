@@ -28,7 +28,7 @@ const { log, chalk } = require('@sfadminltd/utils')
 		.option('-f, --force', 'overwrite target directory if it exists')
 		.action(function(name, options) {
 			if (minimist(argv.slice(3))._.length > 1) {
-				log.warn('You provided more than one argument. The first one will be used as the project\'s name, the rest are ignored.')
+				log.warn('create', 'You provided more than one argument. The first one will be used as the project\'s name, the rest are ignored.')
 			}
 			require('@sfadminltd/create')(name, options)
 		})
