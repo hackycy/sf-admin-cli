@@ -35,7 +35,7 @@ module.exports = function generateReadme(type, name, packageManager) {
     '```',
     '',
     '# 版权声明\n',
-    '> 请尊重原创，原项目遵循GNU General Public License v3.0协议',
+    '> 请尊重原创，原项目遵循 **MIT协议**',
     '> 原项目链接：',
     '> - [sf-midway-admin](https://github.com/hackycy/sf-midway-admin)',
     '> - [sf-nest-admin](https://github.com/hackycy/sf-nest-admin)',
