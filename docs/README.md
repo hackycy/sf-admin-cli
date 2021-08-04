@@ -3,7 +3,7 @@ home: true
 heroImage: /favicon.ico
 actionText: 快速开始 →
 actionLink: /guide/
-footer: GPL-3.0 License | Copyright © 2021-present hackycy
+footer: MIT License | Copyright © 2021-present Changyuan Yang
 ---
 
 ## 快速开始
