@@ -5,8 +5,8 @@ const execa = require('execa')
 const fs = require('fs-extra')
 const path = require('path')
 
-const GH_PAGE_BRANCH = 'sf-admin-cli-gh-page'
-const GH_PAGE_DIR = path.join(__dirname, '../', '../', GH_PAGE_BRANCH)
+const GH_PAGE_BRANCH = 'gh-page'
+const GH_PAGE_DIR = path.join(__dirname, '../', '../', `sf-admin-cli-${GH_PAGE_BRANCH}`)
 const DOCS_DIST_PATH = path.resolve(__dirname, '../', 'docs', '.vuepress', 'dist')
 
 /**
