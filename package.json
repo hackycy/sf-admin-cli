@@ -2,8 +2,8 @@
   "name": "sf-admin-cli",
   "private": true,
   "author": "hackycy",
-  "description": "sf admin cli",
-  "main": "index.js",
+  "license": "MIT",
+  "description": "create sf-admin projects quickly, accurately and easily",
   "scripts": {
     "prepublish": "rimraf commands/**/package-lock.json core/**/package-lock.json",
     "lint": "eslint \"{commands,core,scripts}/**/*.js\" --fix",
