@@ -67,16 +67,14 @@ async function create(projectName, options) {
     'package.json': JSON.stringify(Object.assign(pkg.resolvePkg(targetServerDir), {
       name: `${name}-${serverTpl}`,
       version: '0.1.0',
-      private: true,
-      description: `Create By sf-${action}-admin`
+      private: true
     }), null, 2)
   })
   writeFileTree(targetVueDir, {
     'package.json': JSON.stringify(Object.assign(pkg.resolvePkg(targetVueDir), {
       name: `${name}-${vueTpl}`,
       version: '0.1.0',
-      private: true,
-      description: 'Create By sf-vue-admin'
+      private: true
     }), null, 2)
   })
 
