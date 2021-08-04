@@ -12,7 +12,8 @@
     "clean": "node scripts/clean.js",
     "sync-tpl": "node scripts/sync-template.js",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "gh": "node scripts/gh-page.js"
   },
   "devDependencies": {
     "@octokit/core": "^3.5.1",
