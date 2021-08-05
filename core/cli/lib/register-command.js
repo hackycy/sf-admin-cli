@@ -25,6 +25,7 @@ const { log, chalk } = require('@sfadminltd/utils')
 		.option('-g, --git [message]', 'force git initialization with initial commit message')
 		.option('-n, --no-git', 'skip git initialization')
 		.option('-p, --split-git', 'initialize the vue and server git separately', false)
+		.option('-s, --skip-install', 'skip package installation')
 		.option('-f, --force', 'overwrite target directory if it exists')
 		.action(function(name, options) {
 			if (minimist(argv.slice(3))._.length > 1) {
