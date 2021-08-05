@@ -14,3 +14,9 @@
 # 使用文档
 
 文档地址：https://blog.si-yee.com/sf-admin-cli/
+
+# 项目地址
+
+- [sf-nest-admin](https://github.com/hackycy/sf-nest-admin)
+- [sf-vue-admin](https://github.com/hackycy/sf-vue-admin)
+- [sf-midway-admin](https://github.com/hackycy/sf-midway-admin)
