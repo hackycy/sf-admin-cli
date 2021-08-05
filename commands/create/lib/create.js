@@ -10,6 +10,7 @@ const { shouldInitGit } = require('./should-init-git')
 const generateReadme = require('./generate-readme')
 const run = require('./run')
 const writeFileTree = require('./write-file-tree')
+const install = require('./install')
 
 async function create(projectName, options) {
   // 检查更新
@@ -92,6 +93,13 @@ async function create(projectName, options) {
     }
   }
 
+  if (!options.skipInstall) {
+    log.info('create', 'Installing Server additional dependencies...')
+    await install(packageManager, 'install', targetServerDir)
+    log.info('create', 'Installing Vue additional dependencies...')
+    await install(packageManager, 'install', targetVueDir)
+  }
+  
   // gen readme
   log.info('create', 'Generating README.md...')
   writeFileTree(targetServerDir, {
