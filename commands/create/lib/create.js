@@ -135,6 +135,22 @@ async function create(projectName, options) {
 
   log.info('create', `Successfully created project ${chalk.yellow(name)}.`)
 
+  console.log(
+`
+Get started with the following commands:
+ 
+ ${chalk.yellow('# server')}
+
+ ${inCurrent ? chalk.cyan(`${chalk.gray('$')} cd ${serverTpl}`) : chalk.cyan(`${chalk.gray('$')} cd ${path.join(name, serverTpl)}`)}
+ ${chalk.gray('$')} ${chalk.cyan(packageManager === 'yarn' ? 'yarn dev' : 'npm run dev')}
+
+ ${chalk.yellow('# vue')}
+
+ ${inCurrent ? chalk.cyan(`${chalk.gray('$')} cd ${vueTpl}`) : chalk.cyan(`${chalk.gray('$')} cd ${path.join(name, vueTpl)}`)}
+ ${chalk.gray('$')} ${chalk.cyan(packageManager === 'yarn' ? 'yarn dev' : 'npm run dev')}
+`
+  )
+
   // git commit初始化失败提示
   if (gitCommitFailed) {
     log.warn(
