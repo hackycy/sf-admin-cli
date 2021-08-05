@@ -4,6 +4,15 @@ const envinfo = require('envinfo')
 const { log, chalk, spinner } = require('@sfadminltd/utils')
 
 async function getEnvInfo(id, { depend }) {
+  console.log(chalk.red(
+`
+____  _____ _    ____  __  __ ___ _   _ 
+/ ___||  ___/ \\  |  _ \\|  \\/  |_ _| \\ | |
+\\___ \\| |_ / _ \\ | | | | |\\/| || ||  \\| |
+ ___) |  _/ ___ \\| |_| | |  | || || |\\  |
+|____/|_|/_/   \\_|____/|_|  |_|___|_| \\_|
+`
+  ))
   console.log(chalk.cyan(chalk.bold('\nEnvironment Info:')))
   spinner.logWithSpinner('Loading...')
   const info = await envinfo.run(
