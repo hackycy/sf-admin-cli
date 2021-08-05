@@ -22,7 +22,7 @@ ____  _____ _    ____  __  __ ___ _   _
       npmPackages: `/**/{typescript,*vue*,@vue/*/,@nestjs/*/,@midwayjs/*/${
         depend && depend.length > 0 ? ',' + depend.join(',') : ''
       }}`,
-      npmGlobalPackages: [id]
+      npmGlobalPackages: [id, '@nestjs/cli', '@vue/cli']
     },
     {
       showNotFound: true,
