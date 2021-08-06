@@ -35,7 +35,8 @@ module.exports = {
           collapsable: false,
           children: [
             '/cli/create',
-            '/cli/load'
+            '/cli/load',
+            '/cli/info'
           ]
         }
       ]
