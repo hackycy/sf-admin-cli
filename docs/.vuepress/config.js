@@ -34,7 +34,8 @@ module.exports = {
           title: '命令',
           collapsable: false,
           children: [
-            '/cli/create'
+            '/cli/create',
+            '/cli/load'
           ]
         }
       ]
