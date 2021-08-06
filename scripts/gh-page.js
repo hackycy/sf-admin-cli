@@ -36,14 +36,22 @@ async function checkoutghpage() {
     ],
     { cwd: GH_PAGE_DIR, stdio: 'inherit' }
   )
+  // 清空git commit
 
   log.info('gh-page', '拷贝构建目录...')
   fs.copySync(DOCS_DIST_PATH, GH_PAGE_DIR, { overwrite: true })
 
   log.info('git', '提交中...')
   const options = { stdio: 'inherit', cwd: GH_PAGE_DIR }
+  
+  // 创建临时 gh-temp 分支，清空git commit记录
+  await execa('git', ['checkout', '--orphan', 'gh-temp'], options)
   await execa('git', ['add', '-A'], options)
   await execa('git', ['commit', '-m', 'update docs', '--no-verify'], options)
+  // 删除原分支
+  await execa('git', ['branch', '-D', GH_PAGE_BRANCH], options)
+  // 重命名分支
+  await execa('git', ['branch', '-m', GH_PAGE_BRANCH], options)
   await execa('git', ['push', 'origin', GH_PAGE_BRANCH, '-f'], options)
   log.info('git', '文档已更新...')
 
