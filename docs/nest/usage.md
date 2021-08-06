@@ -16,7 +16,7 @@ sfadmin create my-project
 
 ## 导入脚本
 
-命令行进入到创建好的后端目录`my-project/server`后，执行脚手架`load`命令导入sql脚本
+命令行进入到创建好的后端目录`my-project/server`后，执行脚手架`load`命令导入sql脚本，所有的脚本都位于`sql`目录
 
 ``` bash
 $ sfadmin load -e ./sql -u root -p 123456 -t 3306 -a localhost -b my-admin -o
@@ -83,7 +83,7 @@ $ npm run dev
 
 ## 目录结构说明
 
-后端目录结构：
+后端`src`目录结构：
 
 ``` bash
 |─setup-swagger.ts # Swaager文档配置
