@@ -2,7 +2,7 @@
 home: true
 heroImage: /favicon.ico
 actionText: 快速开始 →
-actionLink: /guide/
+actionLink: /cli/
 footer: MIT License | Copyright © 2021-present Changyuan Yang
 ---
 
