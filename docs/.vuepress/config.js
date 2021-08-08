@@ -46,11 +46,14 @@ module.exports = {
       ],
       '/nest/': [
         '/nest/',
-        '/nest/docker',
         '/nest/usage'
       ],
       '/midway/': [
         '/midway/',
+      ],
+      '/vue/': [
+        '/vue/',
+        '/vue/docker'
       ]
     }
   }

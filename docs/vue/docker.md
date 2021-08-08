@@ -2,7 +2,7 @@
 
 快速体验需要本地已经安装[Docker](http://docker.com/)以及[Docker-Compose](https://docs.docker.com/compose/)
 
-进入任意目录，创建一个`docker-compose.yml`文件，同时拷贝出仓库下的sql脚本至当前目录
+在任意目录下创建一个`docker-compose.yml`文件，同时拷贝出选择的[Nest](https://github.com/hackycy/sf-nest-admin)或者[Midway](https://github.com/hackycy/sf-midway-admin)仓库下的sql脚本至当前目录，以Nest版为例
 
 ``` yml
 version: "3.0"
@@ -35,7 +35,7 @@ services:
       TZ: Asia/Shanghai
 
   sfserver:
-    image: qa894178522/sfnestadmin:stable
+    image: qa894178522/sfnestadmin:stable # midway请使用 qa894178522/sfvueadmin:stable
     restart: always
     depends_on:
       - db
@@ -49,7 +49,7 @@ services:
       REDIS_HOST: redis
       REDIS_PORT: 6379
       REDIS_PASSWORD: 123456
-      # 可选
+      # nest可选
       MAILER_HOST: xxx
       MAILER_PORT: xxx
       MAILER_USER: xxx
@@ -63,7 +63,7 @@ services:
       QINIU_ACCESS_TYPE: public # or private
 
   sfvue:
-    image: qa894178522/sfvueadmin:nest
+    image: qa894178522/sfvueadmin:nest # midway请使用 qa894178522/sfvueadmin:midway
     restart: always
     environment:
       TZ: Asia/Shanghai
@@ -98,4 +98,10 @@ docker-compose -f "docker-compose.yml" up -d --build
 
 ::: tip 提示
 超级管理员账号：rootadmin，密码：123456
+
+**后端Nest版docker下的image：**<br />
+sfserver：qa894178522/sfnestadmin:stable<br />sfvue：qa894178522/sfvueadmin:nest
+
+**后端Midway版docker下的iamge：**<br />
+sfserver：qa894178522/sfmidwayadmin:stable<br />sfvue：qa894178522/sfvueadmin:midway
 :::
