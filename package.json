@@ -11,6 +11,7 @@
     "release": "node scripts/release.js",
     "clean": "node scripts/clean.js",
     "sync-tpl": "node scripts/sync-template.js",
+    "gen-docs": "node scripts/gen-docs.js",
     "gh": "node scripts/gh-page.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
