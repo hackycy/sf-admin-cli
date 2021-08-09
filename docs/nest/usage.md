@@ -52,7 +52,7 @@ SF-ADMIN-CLI info load import sql done
 
 ## 修改开发配置
 
-后端文件配置在后端目录下的`src/config`
+基于[@nestjs/config](https://docs.nestjs.com/techniques/configuration#configuration)，后端文件配置在后端目录下的`src/config`
 
 ``` bash
 |─config.production.ts
