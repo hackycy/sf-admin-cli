@@ -20,3 +20,7 @@
 - [sf-nest-admin](https://github.com/hackycy/sf-nest-admin)
 - [sf-vue-admin](https://github.com/hackycy/sf-vue-admin)
 - [sf-midway-admin](https://github.com/hackycy/sf-midway-admin)
+
+# LICENSE
+
+[MIT](LICENSE)
