@@ -19,7 +19,10 @@ async function getPackageLastVersion(
   // 过去基于BaseVersion以上的版本
   const versions = Object.keys(data.versions)
     .filter((v) => semver.satisfies(v, `>=${baseVersion}`))
-    .sort((v1, v2) => semver.gt(v2, v1))
+    .sort((v1, v2) => {
+      if (semver.lt(v1, v2)) return 1
+      else return -1
+    })
   return versions[0]
 }
 
