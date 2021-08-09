@@ -8,7 +8,7 @@ sfadmin create [options] <project-name>
 
 ## 描述
 
-创建并初始化一个新的 Nest 项目。提示使用包管理器。
+创建并初始化一个新的 [Nest](/nest/) 或者 [Midway](/midway/) 项目。
 
 - 创建具有给定的文件夹
 - 为前端及后端创建子文件夹（server / vue）
