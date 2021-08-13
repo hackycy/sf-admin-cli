@@ -55,7 +55,8 @@ module.exports = {
       ],
       '/vue/': [
         '/vue/',
-        '/vue/docker'
+        '/vue/docker',
+        '/vue/usage'
       ]
     }
   }
