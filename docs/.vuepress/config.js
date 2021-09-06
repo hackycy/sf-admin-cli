@@ -47,7 +47,8 @@ module.exports = {
       ],
       '/nest/': [
         '/nest/',
-        '/nest/usage'
+        '/nest/usage',
+        '/nest/todolist'
       ],
       '/midway/': [
         '/midway/',
