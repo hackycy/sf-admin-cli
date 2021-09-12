@@ -134,3 +134,21 @@ $ npm run dev
 | |─ws # Socket模块
 |─entities # TypeORM 实体文件定义
 ```
+
+## 日志
+
+该系统基于[Winston](https://github.com/winstonjs/winston)自定义了一套日志模块，根据配置文件进行调整日志输出等级，分为控制台、文件输出。
+
+请使用`src/shared/logger/logger.service.ts`下的`LoggerService`进行日志输出调试，输出等级有如下：
+
+- debug: 4
+- verbose: 3
+- info: 2
+- warn: 1
+- error: 0
+
+::: tip 注意
+默认的控制台输出等级为`info`，生产环境下默认不允许控制台进行输出，文件输出等级默认为`warn`。日志默认为当前项目路径下的`logs`目录，也可自行配置。
+
+默认`TypeORM`也使用了`LoggerService`进行日志输出。
+:::
