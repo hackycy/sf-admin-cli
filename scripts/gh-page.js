@@ -31,7 +31,7 @@ async function checkoutghpage() {
       'clone',
       '-b',
       GH_PAGE_BRANCH,
-      'https://github.com/hackycy/sf-admin-cli.git',
+      'git@github.com:hackycy/sf-admin-cli.git',
       '.'
     ],
     { cwd: GH_PAGE_DIR, stdio: 'inherit' }
