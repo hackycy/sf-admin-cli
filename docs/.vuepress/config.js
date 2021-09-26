@@ -47,8 +47,7 @@ module.exports = {
       ],
       '/nest/': [
         '/nest/',
-        '/nest/usage',
-        '/nest/todolist'
+        '/nest/usage'
       ],
       '/midway/': [
         '/midway/',
@@ -57,7 +56,8 @@ module.exports = {
       '/vue/': [
         '/vue/',
         '/vue/docker',
-        '/vue/usage'
+        '/vue/usage',
+        '/vue/todolist'
       ]
     }
   }
