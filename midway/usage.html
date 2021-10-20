@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>快速上手 | SF-ADMIN</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="快速、准确、方便的创建 sf-admin 项目">
+    
+    <link rel="preload" href="/sf-admin-cli/assets/css/0.styles.afd142a6.css" as="style"><link rel="preload" href="/sf-admin-cli/assets/js/app.9bf9150b.js" as="script"><link rel="preload" href="/sf-admin-cli/assets/js/2.81ec1407.js" as="script"><link rel="preload" href="/sf-admin-cli/assets/js/16.d4612825.js" as="script"><link rel="prefetch" href="/sf-admin-cli/assets/js/10.30856e85.js"><link rel="prefetch" href="/sf-admin-cli/assets/js/11.c3f17b54.js"><link rel="prefetch" href="/sf-admin-cli/assets/js/12.7756fd1f.js"><link rel="prefetch" href="/sf-admin-cli/assets/js/13.207e5e1f.js"><link rel="prefetch" href="/sf-admin-cli/assets/js/14.edf3904f.js"><link rel="prefetch" href="/sf-admin-cli/assets/js/15.ef611a81.js"><link rel="prefetch" href="/sf-admin-cli/assets/js/17.de4ca1e0.js"><link rel="prefetch" href="/sf-admin-cli/assets/js/18.3aefb502.js"><link rel="prefetch" href="/sf-admin-cli/assets/js/19.defd718d.js"><link rel="prefetch" href="/sf-admin-cli/assets/js/3.bb99558f.js"><link rel="prefetch" href="/sf-admin-cli/assets/js/4.02173682.js"><link rel="prefetch" href="/sf-admin-cli/assets/js/5.7552ab5c.js"><link rel="prefetch" href="/sf-admin-cli/assets/js/6.aaa9791f.js"><link rel="prefetch" href="/sf-admin-cli/assets/js/7.23b1d5b2.js"><link rel="prefetch" href="/sf-admin-cli/assets/js/8.964bcf4d.js"><link rel="prefetch" href="/sf-admin-cli/assets/js/9.b7126596.js">
+    <link rel="stylesheet" href="/sf-admin-cli/assets/css/0.styles.afd142a6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/sf-admin-cli/" class="home-link router-link-active"><!----> <span class="site-name">SF-ADMIN</span></a> <div class="links"><!----> <nav class="nav-links can-hide"><div class="nav-item"><a href="/sf-admin-cli/cli/" class="nav-link">
+  CLI指南
+</a></div><div class="nav-item"><a href="/sf-admin-cli/nest/" class="nav-link">
+  Nest指南
+</a></div><div class="nav-item"><a href="/sf-admin-cli/midway/" class="nav-link router-link-active">
+  Midway指南
+</a></div><div class="nav-item"><a href="/sf-admin-cli/vue/" class="nav-link">
+  前端指南
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开源地址" class="dropdown-title"><span class="title">开源地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="开源地址" class="mobile-dropdown-title"><span class="title">开源地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hackycy/sf-admin-cli" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CLI
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/hackycy/sf-vue-admin" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/hackycy/sf-nest-admin" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Nest后端
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/hackycy/sf-midway-admin" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Midway后端
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/hackycy/sf-egg-admin" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Egg后端
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/sf-admin-cli/cli/" class="nav-link">
+  CLI指南
+</a></div><div class="nav-item"><a href="/sf-admin-cli/nest/" class="nav-link">
+  Nest指南
+</a></div><div class="nav-item"><a href="/sf-admin-cli/midway/" class="nav-link router-link-active">
+  Midway指南
+</a></div><div class="nav-item"><a href="/sf-admin-cli/vue/" class="nav-link">
+  前端指南
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开源地址" class="dropdown-title"><span class="title">开源地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="开源地址" class="mobile-dropdown-title"><span class="title">开源地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/hackycy/sf-admin-cli" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CLI
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/hackycy/sf-vue-admin" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/hackycy/sf-nest-admin" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Nest后端
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/hackycy/sf-midway-admin" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Midway后端
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/hackycy/sf-egg-admin" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Egg后端
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/sf-admin-cli/midway/" aria-current="page" class="sidebar-link">介绍</a></li><li><a href="/sf-admin-cli/midway/usage.html" aria-current="page" class="active sidebar-link">快速上手</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/sf-admin-cli/midway/usage.html#项目初始化" class="sidebar-link">项目初始化</a></li><li class="sidebar-sub-header"><a href="/sf-admin-cli/midway/usage.html#导入脚本" class="sidebar-link">导入脚本</a></li><li class="sidebar-sub-header"><a href="/sf-admin-cli/midway/usage.html#修改开发配置" class="sidebar-link">修改开发配置</a></li><li class="sidebar-sub-header"><a href="/sf-admin-cli/midway/usage.html#运行" class="sidebar-link">运行</a></li><li class="sidebar-sub-header"><a href="/sf-admin-cli/midway/usage.html#目录结构说明" class="sidebar-link">目录结构说明</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="快速上手"><a href="#快速上手" class="header-anchor">#</a> 快速上手</h1> <h2 id="项目初始化"><a href="#项目初始化" class="header-anchor">#</a> 项目初始化</h2> <p>使用脚手架 <a href="/sf-admin-cli/cli/">@sfadminltd/cli</a> 创建一个标准的Nest项目：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>sfadmin create my-project
+</code></pre></div><div class="custom-block tip"><p class="custom-block-title">注意</p> <p>请根据提示选择 <strong>midway</strong> 模板</p></div> <p>待脚手架创建项目完毕后，进入<code>my-project</code>目录，会有一个<code>server</code>和<code>vue</code>文件夹，分别是后端代码以及前端代码。</p> <h2 id="导入脚本"><a href="#导入脚本" class="header-anchor">#</a> 导入脚本</h2> <p>命令行进入到创建好的后端目录<code>my-project/server</code>后，执行脚手架<code>load</code>命令导入sql脚本，所有的脚本都位于<code>sql</code>目录</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ sfadmin load -e ./sql -u root -p <span class="token number">123456</span> -t <span class="token number">3306</span> -a localhost -b my-admin -o
+SF-ADMIN-CLI info load Trying to connect<span class="token punctuation">..</span>.
+SF-ADMIN-CLI info load Connection succeeded
+SF-ADMIN-CLI notice load importing sql: my-project/server/sql/init.sql
+SF-ADMIN-CLI info load <span class="token function">import</span> sql <span class="token keyword">done</span>
+┌─────────┬───────────────────────┐
+│ <span class="token punctuation">(</span>index<span class="token punctuation">)</span> │  Tables_in_my-admin   │
+├─────────┼───────────────────────┤
+│    <span class="token number">0</span>    │   <span class="token string">'sys_department'</span>    │
+│    <span class="token number">1</span>    │    <span class="token string">'sys_login_log'</span>    │
+│    <span class="token number">2</span>    │      <span class="token string">'sys_menu'</span>       │
+│    <span class="token number">3</span>    │     <span class="token string">'sys_req_log'</span>     │
+│    <span class="token number">4</span>    │      <span class="token string">'sys_role'</span>       │
+│    <span class="token number">5</span>    │ <span class="token string">'sys_role_department'</span> │
+│    <span class="token number">6</span>    │    <span class="token string">'sys_role_menu'</span>    │
+│    <span class="token number">7</span>    │      <span class="token string">'sys_task'</span>       │
+│    <span class="token number">8</span>    │    <span class="token string">'sys_task_log'</span>     │
+│    <span class="token number">9</span>    │      <span class="token string">'sys_user'</span>       │
+│   <span class="token number">10</span>    │    <span class="token string">'sys_user_role'</span>    │
+└─────────┴───────────────────────┘
+</code></pre></div><blockquote><p>示例下的命令参数具体含义请查看<a href="/sf-admin-cli/cli/">CLI教程</a></p></blockquote> <div class="custom-block tip"><p class="custom-block-title">注意</p> <p>这里需要你提前准备好MySQL环境
+<br>
+也可以不使用脚手架进行导入，可自行手动创建数据库及导入脚本</p></div> <h2 id="修改开发配置"><a href="#修改开发配置" class="header-anchor">#</a> 修改开发配置</h2> <p>后端文件配置在后端目录下的<code>src/config</code></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token operator">|</span>─config.local.ts
+<span class="token operator">|</span>─plugin.ts
+<span class="token operator">|</span>─config.prod.ts
+<span class="token operator">|</span>─config.default.ts
+<span class="token operator">|</span>─config.unittest.ts
+</code></pre></div><p>开发环境下请修改<code>config.local.ts</code>，生产环境下修改<code>config.prod.ts</code>。</p> <p>配置功能请查看Midway官方文档：<a href="https://www.yuque.com/midwayjs/midway_v2/env_config" target="_blank" rel="noopener noreferrer">多环境配置<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="运行"><a href="#运行" class="header-anchor">#</a> 运行</h2> <p>分别进入后端目录及前端目录，运行<code>npm run dev</code>即可</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># server</span>
+$ <span class="token builtin class-name">cd</span> server
+$ <span class="token function">npm</span> run dev
+<span class="token comment"># vue</span>
+$ <span class="token builtin class-name">cd</span> vue
+$ <span class="token function">npm</span> run dev
+</code></pre></div><p>运行后即可访问： <a href="http://localhost:9528/" target="_blank" rel="noopener noreferrer">http://localhost:9528/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="目录结构说明"><a href="#目录结构说明" class="header-anchor">#</a> 目录结构说明</h2> <p>后端<code>src</code>目录结构：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token operator">|</span>─dto <span class="token comment"># Api参数校验DTO定义</span>
+<span class="token operator">|</span>─middleware <span class="token comment"># 中间件</span>
+<span class="token operator">|</span>─config <span class="token comment"># 项目配置</span>
+<span class="token operator">|</span>─entity <span class="token comment"># TypeORM实体类定义</span>
+<span class="token operator">|</span>─controller
+<span class="token operator">|</span> <span class="token operator">|</span>─base.ts <span class="token comment"># 基类Controller</span>
+<span class="token operator">|</span> <span class="token operator">|</span>─admin <span class="token comment"># 后台模块controller</span>
+<span class="token operator">|</span> <span class="token operator">|</span> <span class="token operator">|</span>─swagger.ts <span class="token comment"># swagger文档</span>
+<span class="token operator">|</span>─common <span class="token comment"># 项目通用工具及错误码</span>
+<span class="token operator">|</span> <span class="token operator">|</span>─error_constants.ts
+<span class="token operator">|</span> <span class="token operator">|</span>─utils.ts
+<span class="token operator">|</span>─interface.ts
+<span class="token operator">|</span>─task <span class="token comment"># 基于 midway-bull 包定义的定时任务</span>
+<span class="token operator">|</span>─service
+<span class="token operator">|</span> <span class="token operator">|</span>─base.ts <span class="token comment"># BaseService基类</span>
+<span class="token operator">|</span> <span class="token operator">|</span>─admin <span class="token comment"># Admin模块</span>
+<span class="token operator">|</span> <span class="token operator">|</span> <span class="token operator">|</span>─comm <span class="token comment"># 通用模块</span>
+<span class="token operator">|</span> <span class="token operator">|</span> <span class="token operator">|</span>─sys <span class="token comment"># 系统模块</span>
+<span class="token operator">|</span> <span class="token operator">|</span> <span class="token operator">|</span>─interface.ts
+<span class="token operator">|</span> <span class="token operator">|</span>─subscribe <span class="token comment"># 定时任务定义</span>
+<span class="token operator">|</span> <span class="token operator">|</span>─common
+<span class="token operator">|</span> <span class="token operator">|</span> <span class="token operator">|</span>─mailer <span class="token comment"># 邮件服务</span>
+<span class="token operator">|</span> <span class="token operator">|</span> <span class="token operator">|</span>─amap <span class="token comment"># 高德api</span>
+<span class="token operator">|</span>─configuration.ts <span class="token comment"># Application</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新于:</span> <span class="time">8/10/2021, 12:02:15 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/sf-admin-cli/midway/" class="prev router-link-active">
+        介绍
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/sf-admin-cli/assets/js/app.9bf9150b.js" defer></script><script src="/sf-admin-cli/assets/js/2.81ec1407.js" defer></script><script src="/sf-admin-cli/assets/js/16.d4612825.js" defer></script>
+  </body>
+</html>
