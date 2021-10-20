@@ -24,7 +24,6 @@
 │   ├── views                  # views 所有页面
 │   ├── App.vue                # 入口页面
 │   ├── main.js                # 入口文件 加载组件 初始化等
-│   └── permission.js          # 权限管理
 ├── tests                      # 测试
 ├── .env.xxx                   # 环境变量配置
 ├── .eslintrc.js               # eslint 配置项
@@ -77,71 +76,56 @@ export default {
 
 ![](./screenshot/add_api_2.png)
 
-那么在新增`api`同时，就要在`src/core/permission/modules`下根据模块进行定义`api`的path。例如：
+那么在新增`api`同时，则新增后缀为`.class.js`后缀的文件定义，并且以`export default`导出类定义，例如：
 
 ```  javascript
 /**
- * src/core/permission/modules/sys/menu.js
- * 菜单模块 
- */
-export default {
-  list: 'sys/menu/list',
-  add: 'sys/menu/add',
-  update: 'sys/menu/update',
-  info: 'sys/menu/info',
-  delete: 'sys/menu/delete'
-}
-
-
-/**
- * src/api/sys/menu.js
- * 菜单api定义示例
+ * src/api/sys/dept.class.js
  */
 import request from '@/utils/request'
-import MenuApi from '@/core/permission/modules/sys/menu'
+import { PermissionAction, PermissionPrefix } from '@/core/permission/decorator'
 
-export function getMenuList() {
-  return request({
-    url: MenuApi.list,
-    method: 'get'
-  })
+@PermissionPrefix('sys/dept')
+class SysDept {
+  @PermissionAction()
+  list() {
+    return request({
+      url: 'sys/dept/list',
+      method: 'get'
+    })
+  }
+
+  @PermissionAction()
+  move(data) {
+    return request({
+      url: 'sys/dept/move',
+      method: 'post',
+      data
+    })
+  }
+
+  // ... 后面省略
 }
 
-export function getMenuInfo(query) {
-  return request({
-    url: MenuApi.info,
-    method: 'get',
-    params: query
-  })
-}
+export default SysDept
+```
 
-export function createMenu(data) {
-  return request({
-    url: MenuApi.add,
-    method: 'post',
-    data
-  })
+使用`@PermissionPrefix`以及`@PermissionAction`装饰器进行定义权限，例如上述例子中，会被自动分析成`sys:dept:list`、`sys:dept:move`，并且在`api`文件夹下定义的`.class.js`后缀的文件会被自动实例化并挂载到`Vue`实例上。
+
+
+页面下需要调用api时则直接使用`vm.$api.sys.dept.list()`即可访问接口， 例如：
+
+``` js
+async getConfigList({ page, limit }) {
+    const { data } = await this.$api.sys.paramConfig.page({ page, limit })
+    return data
 }
 ```
 
-在页面下使用：
-
-``` html
-<el-link
-  :disabled="scope.row.type === 'file' && !$auth('netdiskManage.info')"
-  :underline="false"
-  @click="handleClickFileItem(scope.row)" />
-```
-
-如示例中的：`$auth('netdiskManage.info')`，该结果会进行返回`true`或`false`，真即为具有该按钮权限。
-
-而`netdiskManage.info`这个值是根据你在`src/core/permission/modules`下的定义进行区分的。
 
 ::: tip 提示
 其他示例：
 - 'src/core/permission/modules/app.js' => 'app'
-- 'src/core/permission/modules/sys/app.js' => 'sysApp'
-- 'src/core/permission/modules/netdisk/manage.js' => 'netdiskManage'
+- 'src/api/sys/param-config.js' => 'sys.paramConfig'
+- 'src/api/netdisk/manage.js' => 'netdisk.manage'
 :::
-
-`info`值则是对应`js` `export default`导出的对象`key`。具体实现请查看[src/core/permission/index.js](https://github.com/hackycy/sf-vue-admin/blob/dev/src/core/permission/index.js)
